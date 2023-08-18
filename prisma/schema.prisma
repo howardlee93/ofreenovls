@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") //
+}
+
+model User {
+  id            String       @default(cuid()) @id
+  name          String?
+  email         String?   @unique
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  posts         Post[]
+  @@map(name: "users")
+}
+
+
+//profile
+model Profile {
+  id        String     @default(cuid()) @id
+}
+
+//work
+model Work {
+  id        String     @default(cuid()) @id
+  title     String
+  summary   String
+  content   String?
+  published Boolean @default(false)
+  author    Profile?   @relation(fields: [authorId], references: [id])
+  authorId  String?
+}
+
+//chapter
+model Chapter {
+  id        String     @default(cuid()) @id
+  title     String
+  summary   String
+  content   String?
+  published Boolean @default(false)
+  work      Work?   @relation(fields: [authorId], references: [id])
+  workId  String?
+}
+
+//subject
+model Subject {
+
+}
+
+
+model Tag {
+
+}
+
+model Bookmark {
+
+}
+
+model Comment{
+
+
+}
