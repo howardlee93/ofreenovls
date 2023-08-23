@@ -3,7 +3,7 @@
 import {useState} from 'react';
 import styles from './login.module.css';
 
-import { useAuth } from "@/app/authContext";
+import { useAuth } from "@/app/_util/authContext";
 
 const Login = ()=> {
     const {login} = useAuth();
@@ -14,8 +14,6 @@ const Login = ()=> {
 
     const handleSubmit =async (event)=>{
         event.preventDefault();
-
-
         const data = {
             name: userName,
             email: email
@@ -34,11 +32,11 @@ const Login = ()=> {
             body: JSONdata,
           };
         const response = await fetch(endpoint, options);
-        const result = await response.json();
-        const user = result[0];
-        console.log(user);
+        const user = await response.json();
+        // const user = result[0];
+        console.log(user.id);
         login(user)
-        alert('you have signed in');
+        // alert('you have signed in');
     }
     
     return(

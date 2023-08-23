@@ -1,6 +1,6 @@
 'use client';
 
-const NewWork = ()=>{
+const PostWork = ()=>{
 
     return(
         <>  
@@ -38,4 +38,4 @@ const NewWork = ()=>{
 
 }
 
-export default NewWork;
+export default PostWork;

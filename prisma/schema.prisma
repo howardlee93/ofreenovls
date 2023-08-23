@@ -10,31 +10,43 @@ datasource db {
   url      = env("DATABASE_URL") //
 }
 
+enum Role {
+  USER
+  ADMIN
+}
+
 model User {
-  id            String       @default(cuid()) @id
+  id            Int       @default(autoincrement()) @id
   name          String?
   email         String?   @unique
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
-  posts         Post[]
+  posts         Work[]
+  profile       Profile? 
+  role          Role 
   @@map(name: "users")
 }
 
-
 //profile
 model Profile {
-  id        String     @default(cuid()) @id
+  id        Int     @default(autoincrement()) @id
+  bio    String?
+  user   User    @relation(fields: [userId], references: [id])
+  userId Int     @unique
 }
 
 //work
 model Work {
-  id        String     @default(cuid()) @id
+  id        Int     @default(autoincrement()) @id
   title     String
   summary   String
   content   String?
+  chapters  Chapter[]
   published Boolean @default(false)
-  author    Profile?   @relation(fields: [authorId], references: [id])
-  authorId  String?
+  author    User?   @relation(fields: [authorId], references: [id])
+  authorId  Int
+  subject   Subject @relation(fields:[subjectId], references: [id])
+  subjectId Int
 }
 
 //chapter
@@ -44,25 +56,29 @@ model Chapter {
   summary   String
   content   String?
   published Boolean @default(false)
-  work      Work?   @relation(fields: [authorId], references: [id])
-  workId  String?
+  work      Work?   @relation(fields: [workId], references: [id])
+  workId    Int
 }
 
 //subject
 model Subject {
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(50)
+  works Work[]
 
+  @@unique([name])
 }
 
 
-model Tag {
+// model Tag {
 
-}
+// }
 
-model Bookmark {
+// model Bookmark {
 
-}
+// }
 
-model Comment{
+// model Comment{
 
 
-}
+// }

@@ -1,26 +1,26 @@
 'use client';
 
 import Link from 'next/link';
-// import { useAuth } from '@/app/authContext';
+import { useAuth } from '@/app/_util/authContext';
 
 //https://dev.to/seven/how-to-implement-protected-routes-in-nextjs-1m50
 export default function Home() {
 
-  // const {user} = useAuth();
+  const {user} = useAuth();
 
   return (
   <>
   <div className="splash">
     <h1>home</h1>
 
-    {/* {user.name ?
+    {user.name ?
       <>
-        <h3>You are already signed in. Welcome!</h3>
-        <Link href="/post">Post your work here</Link>
+        <h3>Hello {user.name} You are  signed in. Welcome!</h3>
+        <a href="/post">Post your work here</a>
       </>
       :<h3>Please sign in to view</h3>
-    } */}
-    <Link href="/user/register">Register new user</Link>
+    }
+    <Link href="/users/register">Register new user</Link>
   </div>
   </>
   )
