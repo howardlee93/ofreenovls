@@ -21,7 +21,7 @@ const Register = ()=>{
         const res = await fetch('/users', options)
         console.log(res);
         const user = await res.json();
-        //register(user.id);
+        register(user);
         //use res to login session
     }
     

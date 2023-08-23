@@ -10,9 +10,9 @@ export const AuthProvider = ({children})=>{
     const [user, setUser] = useState({});
     useEffect(()=>{
         const getSessionId = async()=>{
-            const id = sessionStorage.getItem('userId');
-            if (id){
-                setUser(id);
+            const sessionUser = JSON.parse(sessionStorage.getItem('userId'));
+            if (sessionUser){
+                setUser(sessionUser);
             }
         }
         getSessionId();

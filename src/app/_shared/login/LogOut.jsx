@@ -1,5 +1,5 @@
 'use client';
-import { useAuth } from "@/app/authContext";
+import { useAuth } from "@/app/_util/authContext";
 const LogOut = ()=>{
     const { logout } = useAuth()
 

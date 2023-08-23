@@ -10,16 +10,17 @@ export default function Home() {
 
   return (
   <>
-  <div className="splash">
-    <h1>home</h1>
+  <div class="h-screen items-center justify-center">
+    <h1>Home</h1>
 
     {user.name ?
       <>
-        <h3>Hello {user.name} You are  signed in. Welcome!</h3>
+        <h3>Hello {user.name}. You are  signed in. Welcome!</h3>
         <a href="/post">Post your work here</a>
       </>
       :<h3>Please sign in to view</h3>
     }
+    <p/>
     <Link href="/users/register">Register new user</Link>
   </div>
   </>
