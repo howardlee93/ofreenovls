@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-
+import Link from 'next/link'
 
 const Profile = ({params})=>{
 
@@ -16,7 +16,7 @@ const Profile = ({params})=>{
         <h1> Profile</h1>
         <p>user id: {userId}</p>
         <p>Bio: {profile.bio}</p>
-        <button>Edit</button>
+        <Link href={`profile/edit`}>Edit</Link>
         </>
     )
 }

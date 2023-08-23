@@ -1,10 +1,11 @@
 'use client';
 
-const EditProfile = ()=>{
- 
+const EditProfile = (props)=>{
+    
     return(
         <form>
-            <h1>edit profile</h1>
+            <h1>Edit Profile</h1>
+            <textarea placeholder="bio"/>
         </form>
     )
 }
