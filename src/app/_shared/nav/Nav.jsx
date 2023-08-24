@@ -18,7 +18,7 @@ const Navigation = () =>{
       <li>Search</li>
       <li>
         {user.name ? 
-        <Link href={`users/${user.id}`}>Hello, {user.name}</Link>
+        <Link href={`/users/${user.id}`} replace>Hello, {user.name}</Link>
         :
         <Login/>
         }

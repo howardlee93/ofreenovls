@@ -6,11 +6,11 @@ const prisma = new PrismaClient();
 
 //register aka create user
 export const POST = async(req, res)=>{
-    const {email, username, role } =  await req.json();
-    console.log(email, username, role );
+    const {email, name, role } =  await req.json();
+    console.log(email, name, role );
     const newUser = await prisma.user.create({
         data: {
-            name: username,
+            name: name,
             email: email,
             profile: { // start with empty bio
                 create: {bio:''}

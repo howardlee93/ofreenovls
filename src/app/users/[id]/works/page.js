@@ -1,10 +1,9 @@
-'use client'
 
-const UserDashboard = ()=>{
+const Works = ()=>{
 
     return(
-        <h1> user dashboard</h1>
+        <h1>Works</h1>
     )
 }
 
-export default UserDashboard;
+export default Works;

@@ -9,8 +9,9 @@ const EditProfile = ({params})=>{
 
     useEffect(()=>{
         fetch(`/profile/${id}`)// find by userId
-        .then(res => setBio(res.bio))
-    },[id])
+        .then(res => res.json())
+        .then(r => setBio(r.bio))
+    },[])
 
     const handleSubmit = async(e)=>{
         e.preventDefault();
@@ -35,14 +36,12 @@ const EditProfile = ({params})=>{
         setBio(res.bio);
     }
 
-
     return(
         <form onSubmit={handleSubmit}>
             <h1>Edit Profile</h1>
             <textarea name="bio" placeholder="bio" value={bio} 
             onChange={e=>setBio(e.target.value)}
             />
-
             <button type="submit">update</button>
         </form>
     )

@@ -19,8 +19,8 @@ const Register = ()=>{
             body: JSON.stringify(registerUserData)
         }
         const res = await fetch('/users', options)
-        console.log(res);
         const user = await res.json();
+        console.log(user);
         register(user);
         //use res to login session
     }
@@ -28,8 +28,8 @@ const Register = ()=>{
     return(
         <form onSubmit={handleSubmit}>
             <h1> Register as new user</h1>
-            <label htmlFor="username">username:</label>
-            <input type="text" name="username"/> 
+            <label htmlFor="name">username:</label>
+            <input type="text" name="name"/> 
             <label htmlFor="email">email:</label>
             <input type="email" name="email"/> 
             <button type="submit"> Register</button>

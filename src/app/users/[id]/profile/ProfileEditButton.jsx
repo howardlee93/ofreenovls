@@ -10,7 +10,7 @@ const ProfileEditButton = (props)=>{
     return(
         <>
         {user.id === userId ? 
-        <Link href={`profile/edit`}>Edit</Link> 
+        <Link href={`profile/edit`} replace>Edit</Link> 
             :
             ""
         }

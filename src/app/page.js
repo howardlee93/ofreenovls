@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
   <>
-  <div class="h-screen items-center justify-center">
+  <div className="h-screen items-center justify-center">
     <h1>Home</h1>
 
     {user.name ?
