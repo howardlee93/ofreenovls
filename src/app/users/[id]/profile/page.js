@@ -16,14 +16,14 @@ const Profile = async ({params})=>{
         }
     })
       
-    //protect edit link
+    //protect edit link use authcontext in client component
     return(
         <>
         <h1> Profile</h1>
         <p>user id: {userId}</p>
         <p>Name:{user.name}</p>
         <p>Bio: {profile.bio}</p>
-        <ProfileEditButton userId={userId}/>
+        <ProfileEditButton userId={userId}/> 
         </>
     )
 }

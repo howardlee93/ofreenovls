@@ -1,12 +1,8 @@
-// 'use client'
-// import { useAuth } from '@/app/_util/authContext';
-// import { usePathname } from 'next/navigation'
-// import Link from 'next/link'
 import { PrismaClient } from "@prisma/client";
 
 const UserDashboard = async ({params})=>{
     const prisma = new PrismaClient();
-    const {id} = params; // or from 
+    const {id} = params; 
     const user = await prisma.user.findUnique({
         where:{
             id: parseInt(id)
