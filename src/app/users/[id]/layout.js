@@ -14,7 +14,7 @@ const UserLayout = ({children, params})=>{
     return(
         <>
             <aside role="sidebar">
-                <li><Link href={`${pathname}/profile`} replace>Profile</Link></li>
+                <li><Link href={`${id}/profile`} replace>Profile</Link></li>
                 <li>Works</li>
                 <li>Bookmarks</li>
                 {protectedView ? 

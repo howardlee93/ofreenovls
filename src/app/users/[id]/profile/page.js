@@ -10,13 +10,18 @@ const Profile = async ({params})=>{
             userId
         }
     })
+    const user = await prisma.user.findUnique({
+        where:{
+            id:userId
+        }
+    })
       
     //protect edit link
     return(
         <>
         <h1> Profile</h1>
         <p>user id: {userId}</p>
-        <p>Name:</p>
+        <p>Name:{user.name}</p>
         <p>Bio: {profile.bio}</p>
         <ProfileEditButton userId={userId}/>
         </>
