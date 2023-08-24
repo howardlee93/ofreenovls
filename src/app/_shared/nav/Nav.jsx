@@ -4,6 +4,7 @@ import Login from '../login/Login';
 import LogOut from '../login/LogOut';
 import styles from './Nav.module.css';
 import { useAuth } from '@/app/_util/authContext';
+import Link from 'next/link'
 
 const Navigation = () =>{
   const {user} = useAuth();
@@ -17,7 +18,7 @@ const Navigation = () =>{
       <li>Search</li>
       <li>
         {user.name ? 
-        <a href={`users/${user.id}`}>Hello, {user.name}</a>
+        <Link href={`users/${user.id}`}>Hello, {user.name}</Link>
         :
         <Login/>
         }

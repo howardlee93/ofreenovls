@@ -1,22 +1,24 @@
 import { PrismaClient } from "@prisma/client";
-import Link from 'next/link'
+import ProfileEditButton from "./ProfileEditButton";
 
-const Profile = ({params})=>{
+const Profile = async ({params})=>{
 
-    const userId = parseInt(params.user);
+    const userId = parseInt(params.id);
     const prisma = new PrismaClient();
-    const profile =  prisma.profile.findUnique({
+    const profile = await prisma.profile.findUnique({
         where:{
             userId
         }
     })
       
+    //protect edit link
     return(
         <>
         <h1> Profile</h1>
         <p>user id: {userId}</p>
+        <p>Name:</p>
         <p>Bio: {profile.bio}</p>
-        <Link href={`profile/edit`}>Edit</Link>
+        <ProfileEditButton userId={userId}/>
         </>
     )
 }
