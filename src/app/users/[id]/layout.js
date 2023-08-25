@@ -1,17 +1,21 @@
-'use client';
+'use client';//for authcontext
 import { useAuth } from '@/app/_util/authContext';
-import Link from 'next/link'
+import Link from 'next/link';
+import styles from './layout.module.css';
+
 
 const UserLayout = ({children, params})=>{
     //this is where the sidebar should go 
-    //have protected
+    //have protectedview
     const {user} = useAuth(); 
     const {id} = params;
     const protectedView = user.id === Number(id)
 
     return(
-        <>
-            <aside role="sidebar" className=''>
+        <div className={styles.container}>
+            <aside role="sidebar" className={styles.sidebar}>
+                <ul>
+                <li><Link href={`/users/${id}`} replace> Dashboard</Link></li>
                 <li><Link href={`${id}/profile`} replace>Profile</Link></li>
                 <li>Works</li>
                 <li>Bookmarks</li>
@@ -20,11 +24,12 @@ const UserLayout = ({children, params})=>{
                 :
                 ""
                 }
+                </ul>
             </aside>
-            <div className='content-center'>
+            <main className={styles.content}>
                 {children}
-            </div>
-        </>
+            </main>
+        </div>
     )
 }
 
