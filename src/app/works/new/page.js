@@ -1,6 +1,9 @@
 'use client';
+import { useAuth } from "@/app/_util/authContext";
+
 
 const PostWork = ()=>{
+    const {user} = useAuth();
 
     return(
         <>  

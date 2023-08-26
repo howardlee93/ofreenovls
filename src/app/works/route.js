@@ -17,19 +17,21 @@ export const GET = async(req,res)=>{
 
 export const POST = async(req,res)=>{
     const {title, summary, content, chapter,
-        subject
+        subject, userId
     } = await req.json();
+
     const newWork = await prisma.work.create({
         data:{
             title,
             summary,
             content,
-            chapter,
-            subject
+            subject,
+            author: userId,
         }
     })
     return NextResponse.json(newWork)
 }
+
 export const PUT = async(req,res)=>{
     
 }
