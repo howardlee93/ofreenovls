@@ -1,6 +1,5 @@
 'use client';
 import { useAuth } from "@/app/_util/authContext";
-import Editor from './Editor';
 import {useState} from 'react';
 
 const PostWork = ()=>{
@@ -21,18 +20,27 @@ const PostWork = ()=>{
 
                 <br></br>
 
-                <label for='warning'>Warning</label>
+                <label for='warning'>Warning:</label>
 
                 <label for='none'>Decline to warn</label>
                 <input type="radio" name="none"/> 
                 <br/>
                 
-                <label for='subject'>Subject:</label>
                 <input type='text' name="subject" placeholder="subject"/>
                 <br/>
 
-                <label for='tags'>Tags:</label>
                 <input type='text' name="tags" placeholder="tags"/>
+                <br/>
+
+                <label for='tags'>Multi-chaptered?:</label>
+                <input type='checkbox' name="chapters"/>
+                <br/>
+
+                <textarea placeholder='summary'/>
+                <br/>
+
+                <textarea placeholder='content'/>
+                <br/>
 
             </div>
         </>
