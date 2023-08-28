@@ -1,6 +1,7 @@
 'use client';
 import { useAuth } from "@/app/_util/authContext";
-
+import Editor from './Editor';
+import {useState} from 'react';
 
 const PostWork = ()=>{
     const {user} = useAuth();
@@ -26,16 +27,14 @@ const PostWork = ()=>{
                 <input type="radio" name="none"/> 
                 <br/>
                 
-                <label for='subject'>subject</label>
-                <input type='text' name="subject"/>
+                <label for='subject'>Subject:</label>
+                <input type='text' name="subject" placeholder="subject"/>
                 <br/>
 
-                <label for='tags'>Tags</label>
-                <input type='text' name="tags"/>
+                <label for='tags'>Tags:</label>
+                <input type='text' name="tags" placeholder="tags"/>
 
-                
             </div>
-            <textarea/>
         </>
     )
 
