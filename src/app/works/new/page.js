@@ -5,12 +5,25 @@ import {useState} from 'react';
 const PostWork = ()=>{
     const {user} = useAuth();
 
+    const handleSubmit = e=>{
+        e.preventDefault();
+        const data = {
+            user: user.id,
+            // rating: e.target.rating.value,
+            // warning: e.target.warning.value,
+            subject: e.target.subject.value,
+            title: e.target.title.value,
+            summary: e.target.summary.value,
+            content: e.target.content.value
+        }
+        console.log(data);
+    }
     return(
         <>  
             <h1>New Work</h1>
-
+            <form onSubmit={handleSubmit}>
             <div className='tag-checkbox'>
-                <label for="rating">Rating:</label>
+                <label htmlFor="rating">Rating:</label>
                 <select name="rating" id="rating">
                     <option value='pg'>PG </option>
                     <option value='pg13'>PG-13</option>
@@ -20,9 +33,13 @@ const PostWork = ()=>{
 
                 <br></br>
 
-                <label for='warning'>Warning:</label>
-
-                <label for='none'>Decline to warn</label>
+                <label htmlFor='warning'>Warning:</label>
+                <span/>
+                <label htmlFor='none'>Decline to warn</label>
+                <input type="radio" name="none"/> 
+                <label htmlFor='none'>Violence</label>
+                <input type="radio" name="none"/> 
+                <label htmlFor='none'>Sex</label>
                 <input type="radio" name="none"/> 
                 <br/>
                 
@@ -32,17 +49,24 @@ const PostWork = ()=>{
                 <input type='text' name="tags" placeholder="tags"/>
                 <br/>
 
-                <label for='tags'>Multi-chaptered?:</label>
+                <label htmlFor='tags'>Multi-chaptered?:</label>
                 <input type='checkbox' name="chapters"/>
                 <br/>
 
-                <textarea placeholder='summary'/>
+                <input type='text' name="title" placeholder="title"/>
+                <br/>
+                <textarea name="summary" placeholder='summary'/>
                 <br/>
 
-                <textarea placeholder='content'/>
+                <textarea name="content" placeholder='content'/>
                 <br/>
 
             </div>
+            <button submit="submit">Preview</button>
+            {/* <button submit="submit">Post</button>
+            <button submit="submit">Edit</button> */}
+
+            </form>
         </>
     )
 
