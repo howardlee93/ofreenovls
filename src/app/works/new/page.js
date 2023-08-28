@@ -1,7 +1,7 @@
 'use client';
 import { useAuth } from "@/app/_util/authContext";
 import {useState} from 'react';
-
+import Editor from "@/app/_shared/Editor";
 const PostWork = ()=>{
     const {user} = useAuth();
 
@@ -55,6 +55,10 @@ const PostWork = ()=>{
 
                 <input type='text' name="title" placeholder="title"/>
                 <br/>
+
+                <Editor/>
+
+                
                 <textarea name="summary" placeholder='summary'/>
                 <br/>
 
