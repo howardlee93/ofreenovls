@@ -5,6 +5,8 @@ import Editor from "@/app/_shared/Editor";
 const PostWork = ()=>{
     const {user} = useAuth();
 
+    const [content, setContent] = useState();
+
     const handleSubmit = e=>{
         e.preventDefault();
         const data = {
@@ -56,7 +58,7 @@ const PostWork = ()=>{
                 <input type='text' name="title" placeholder="title"/>
                 <br/>
 
-                <Editor/>
+                <Editor setContent={setContent} content={content}/>
 
                 
                 <textarea name="summary" placeholder='summary'/>
