@@ -20,21 +20,22 @@ const EditProfile = ({params})=>{
             userId: id,
             bio: content
         }
-        console.log(data);
         const JSONdata = JSON.stringify(data);
-        const options = {
-            // The method is POST because we are sending data.
-            method: 'PUT',
-            // Tell the server we're sending JSON.
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            // Body of the request is the JSON data we created above.
-            body: JSONdata,
-          };
-        const response= await fetch('/profile', options);
-        const res = await response.json();
-        setContent(res.bio);
+        console.log(JSONdata);
+
+        // const options = {
+        //     // The method is put because we are sending data.
+        //     method: 'PUT',
+        //     // Tell the server we're sending JSON.
+        //     headers: {
+        //       'Content-Type': 'application/json',
+        //     },
+        //     // Body of the request is the JSON data we created above.
+        //     body: JSONdata,
+        //   };
+        // const response= await fetch('/profile', options);
+        // const res = await response.json();
+        // setContent(res.bio);
     }
 
     return(
@@ -42,7 +43,7 @@ const EditProfile = ({params})=>{
             <h1>Edit Profile</h1>
 
             <div name='bio'>
-            <Editor content={bio}
+            <Editor content={content}
                 setContent={setContent}
             />
             </div>
