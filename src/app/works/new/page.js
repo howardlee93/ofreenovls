@@ -1,7 +1,7 @@
 'use client';
 import { useAuth } from "@/app/_util/authContext";
 import {useState} from 'react';
-import Editor from "@/app/_shared/Editor";
+import Editor from "@/app/_shared/editor/Editor";
 const PostWork = ()=>{
     const {user} = useAuth();
 
