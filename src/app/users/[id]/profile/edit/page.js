@@ -1,23 +1,24 @@
 'use client';
 import {useState, useEffect} from 'react';
+import Editor from '@/app/_shared/editor/Editor';
 
 const EditProfile = ({params})=>{
 
-    const [bio, setBio] = useState('')
+    const [content, setContent] = useState('')
     //get bio from prev param
     const {id} = params; //user
 
     useEffect(()=>{
         fetch(`/profile/${id}`)// find by userId
         .then(res => res.json())
-        .then(r => setBio(r.bio))
+        .then(r => setContent(r.bio))
     },[])
 
     const handleSubmit = async(e)=>{
         e.preventDefault();
         const data = {
             userId: id,
-            bio: bio
+            bio: content
         }
         console.log(data);
         const JSONdata = JSON.stringify(data);
@@ -33,15 +34,18 @@ const EditProfile = ({params})=>{
           };
         const response= await fetch('/profile', options);
         const res = await response.json();
-        setBio(res.bio);
+        setContent(res.bio);
     }
 
     return(
         <form onSubmit={handleSubmit}>
             <h1>Edit Profile</h1>
-            <textarea name="bio" placeholder="bio" value={bio} 
-            onChange={e=>setBio(e.target.value)}
+
+            <div name='bio'>
+            <Editor content={bio}
+                setContent={setContent}
             />
+            </div>
             <button type="submit">update</button>
         </form>
     )
