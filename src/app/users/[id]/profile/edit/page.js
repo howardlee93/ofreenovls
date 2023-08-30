@@ -23,22 +23,24 @@ const EditProfile = ({params})=>{
         const JSONdata = JSON.stringify(data);
         console.log(JSONdata);
 
-        // const options = {
-        //     // The method is put because we are sending data.
-        //     method: 'PUT',
-        //     // Tell the server we're sending JSON.
-        //     headers: {
-        //       'Content-Type': 'application/json',
-        //     },
-        //     // Body of the request is the JSON data we created above.
-        //     body: JSONdata,
-        //   };
-        // const response= await fetch('/profile', options);
-        // const res = await response.json();
-        // setContent(res.bio);
+        const options = {
+            // The method is put because we are sending data.
+            method: 'PUT',
+            // Tell the server we're sending JSON.
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            // Body of the request is the JSON data we created above.
+            body: JSONdata,
+          };
+        const response= await fetch('/profile', options);
+        const res = await response.json();
+        setContent(res.bio);
     }
 
     return(
+        <>
+        {content ? 
         <form onSubmit={handleSubmit}>
             <h1>Edit Profile</h1>
 
@@ -49,6 +51,10 @@ const EditProfile = ({params})=>{
             </div>
             <button type="submit">update</button>
         </form>
+        :
+        ''
+        }
+        </>
     )
 }
 

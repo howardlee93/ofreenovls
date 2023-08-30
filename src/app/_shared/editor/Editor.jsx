@@ -1,21 +1,34 @@
 'use client';
-
-
+//https://github.com/Mediumtutorial/wysiwyg-editor-js-react/blob/main/src/tools.js
 //https://github.com/sumankalia/react-editorjs/blob/main/src/components/EditorCompoenent.js
 import React, { memo, useEffect, useRef } from "react";
 import EditorJS, { OutputData } from "@editorjs/editorjs";
+import Paragrah from '@editorjs/paragraph'; 
+import {formatDataIntoBlocks} from './EditorHelper';
 
-const Editor = (props)=>{
+const Editor = ({content, setContent})=>{
     const ref = useRef();
+    // const {content, setContent} = props;
 
     useEffect(()=>{
+        // let formated; 
+        // if (content.block){ // if already formated
+        //     formated = content
+        // }else{
+        const formated = formatDataIntoBlocks(content);//
+        // }
+        console.log(formated, content);
+        
         if (!ref.current){
             const editor = new EditorJS({
-                data: props.content,
+                tools:{
+                    paragraph: Paragrah
+                },
+                data: formated,
                 holderId : 'editorjs',
                 onChange: async () => {
                     let newcontent = await editor.saver.save();
-                    props.setContent(newcontent)
+                    setContent(newcontent)
                     console.log(newcontent);
                   },
             })
@@ -36,4 +49,4 @@ const Editor = (props)=>{
     )
 }
 
-export default Editor;
+export default memo(Editor);
