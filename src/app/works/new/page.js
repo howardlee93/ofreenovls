@@ -16,7 +16,7 @@ const PostWork = ()=>{
             subject: e.target.subject.value,
             title: e.target.title.value,
             summary: e.target.summary.value,
-            content: e.target.content.value
+            content: content
         }
         console.log(data);
     }
@@ -57,15 +57,12 @@ const PostWork = ()=>{
 
                 <input type='text' name="title" placeholder="title"/>
                 <br/>
-
-                <Editor setContent={setContent} content={content}/>
-
                 
                 <textarea name="summary" placeholder='summary'/>
                 <br/>
 
-                <textarea name="content" placeholder='content'/>
-                <br/>
+                <Editor setContent={setContent} content={content}/>
+
 
             </div>
             <button submit="submit">Preview</button>

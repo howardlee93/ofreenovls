@@ -11,12 +11,12 @@ const Editor = (props)=>{
     useEffect(()=>{
         if (!ref.current){
             const editor = new EditorJS({
-                data: props.data,
+                data: props.content,
                 holderId : 'editorjs',
                 onChange: async () => {
-                    let content = await editor.saver.save();
-        
-                    console.log(content);
+                    let newcontent = await editor.saver.save();
+                    props.setContent(newcontent)
+                    console.log(newcontent);
                   },
             })
             ref.current = editor;
