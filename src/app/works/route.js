@@ -16,17 +16,28 @@ export const GET = async(req,res)=>{
 };
 
 export const POST = async(req,res)=>{
-    const {title, summary, content, chapter,
-        subject, userId
+    const {title, summary, chapter,
+        subject, author
     } = await req.json();
 
     const newWork = await prisma.work.create({
         data:{
             title,
             summary,
-            content,
-            subject,
-            author: userId,
+            chapters:{create:[
+                {content:chapter}
+            ]},
+            subject:{
+                connectOrCreate:{ // check if subject exists first
+                    where:{
+                        name: subject
+                    },
+                    create: {
+                        name:subject
+                    }
+                }
+            },
+            author: {connect: {id: parseInt(author)}}
         }
     })
     return NextResponse.json(newWork)
