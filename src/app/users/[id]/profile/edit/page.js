@@ -1,28 +1,32 @@
 'use client';
 import {useState, useEffect} from 'react';
+import Editor from '@/app/_shared/editor/Editor';
+import { useRouter } from 'next/navigation';
+
 
 const EditProfile = ({params})=>{
-
-    const [bio, setBio] = useState('')
+    const router = useRouter();
+    const [content, setContent] = useState('')
     //get bio from prev param
     const {id} = params; //user
 
     useEffect(()=>{
         fetch(`/profile/${id}`)// find by userId
         .then(res => res.json())
-        .then(r => setBio(r.bio))
+        .then(r => setContent(r.bio))
     },[])
 
     const handleSubmit = async(e)=>{
         e.preventDefault();
         const data = {
             userId: id,
-            bio: bio
+            bio: content.join('')
         }
-        console.log(data);
         const JSONdata = JSON.stringify(data);
+        console.log(JSONdata);
+
         const options = {
-            // The method is POST because we are sending data.
+            // The method is put because we are sending data.
             method: 'PUT',
             // Tell the server we're sending JSON.
             headers: {
@@ -33,17 +37,28 @@ const EditProfile = ({params})=>{
           };
         const response= await fetch('/profile', options);
         const res = await response.json();
-        setBio(res.bio);
+        setContent(res.bio);
+        router.replace(`/users/${id}/profile`)
+        //probably would want to redirect to profile
     }
 
     return(
+        <>
+        {content ? 
         <form onSubmit={handleSubmit}>
             <h1>Edit Profile</h1>
-            <textarea name="bio" placeholder="bio" value={bio} 
-            onChange={e=>setBio(e.target.value)}
+
+            <div name='bio'>
+            <Editor content={content}
+                setContent={setContent}
             />
+            </div>
             <button type="submit">update</button>
         </form>
+        :
+        ''
+        }
+        </>
     )
 }
 

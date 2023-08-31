@@ -16,7 +16,7 @@ const PostWork = ()=>{
             subject: e.target.subject.value,
             title: e.target.title.value,
             summary: e.target.summary.value,
-            content: content
+            content: content.join()
         }
         console.log(data);
     }
