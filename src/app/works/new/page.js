@@ -3,7 +3,7 @@ import { useAuth } from "@/app/_util/authContext";
 import {useState} from 'react';
 import Editor from "@/app/_shared/editor/Editor";
 import styles from './layout.module.css';
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation'
 
 const PostWork = ()=>{
     const {user} = useAuth();
@@ -27,10 +27,10 @@ const PostWork = ()=>{
                 'Content-Type': 'application/json',
               },
             body: JSON.stringify(data)
-        }
-       const response = fetch('/works/', options)
-    //    .then(router.replace(`/users/{user.id}`))
-        console.log(response);
+        };
+
+       fetch('/works/', options)
+       .then(()=>router.replace(`/users/${user.id}`))
     }
     return(
         <div className={styles.newwork}>  
