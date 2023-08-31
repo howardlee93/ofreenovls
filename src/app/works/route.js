@@ -6,13 +6,14 @@ const prisma = new PrismaClient();
 
 export const GET = async(req,res)=>{ 
 
-    const filter = await req.json(); // how to do with multiple filters
-    const works = await prisma.work.findMany({
-        where:{
-            [filter]:filter
-        }
-    })
-    return NextResponse.json(works);
+    // req = await req.json(); // how to do with multiple filters
+    console.log(req)
+    // const works = await prisma.work.findMany({
+    //     where:{
+    //         [filter]:filter
+    //     }
+    // })
+    // return NextResponse.json(works);
 };
 
 export const POST = async(req,res)=>{
