@@ -18,7 +18,7 @@ const DEFAULT_INITIAL_DATA =  {
 }
 
 export const formatDataIntoBlocks = (data)=>{
-    if (data.blocks){
+    if (data !== undefined && data.blocks){
         return data;
     }
     let output = {
