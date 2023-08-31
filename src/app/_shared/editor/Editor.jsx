@@ -4,7 +4,7 @@
 import React, { memo, useEffect, useRef } from "react";
 import EditorJS, { OutputData } from "@editorjs/editorjs";
 import Paragrah from '@editorjs/paragraph'; 
-import {formatDataIntoBlocks} from './EditorHelper';
+import {formatDataIntoBlocks, formatBlocksToHTML} from './EditorHelper';
 
 const Editor = ({content, setContent})=>{
     const ref = useRef();
@@ -28,8 +28,9 @@ const Editor = ({content, setContent})=>{
                 holderId : 'editorjs',
                 onChange: async () => {
                     let newcontent = await editor.saver.save();
-                    setContent(newcontent)
-                    console.log(newcontent);
+                    const contentToHTML = await formatBlocksToHTML(newcontent);
+                    console.log(contentToHTML);
+                    setContent(contentToHTML)
                   },
             })
             ref.current = editor;

@@ -1,9 +1,11 @@
 'use client';
 import {useState, useEffect} from 'react';
 import Editor from '@/app/_shared/editor/Editor';
+import { useRouter } from 'next/navigation';
+
 
 const EditProfile = ({params})=>{
-
+    const router = useRouter();
     const [content, setContent] = useState('')
     //get bio from prev param
     const {id} = params; //user
@@ -18,7 +20,7 @@ const EditProfile = ({params})=>{
         e.preventDefault();
         const data = {
             userId: id,
-            bio: content
+            bio: content.join('')
         }
         const JSONdata = JSON.stringify(data);
         console.log(JSONdata);
@@ -36,6 +38,8 @@ const EditProfile = ({params})=>{
         const response= await fetch('/profile', options);
         const res = await response.json();
         setContent(res.bio);
+        router.replace(`/users/${id}/profile`)
+        //probably would want to redirect to profile
     }
 
     return(

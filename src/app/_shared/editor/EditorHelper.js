@@ -1,6 +1,6 @@
 import Paragraph from '@editorjs/paragraph'; 
 import Code from '@editorjs/code';
-
+import edjsHTML from 'editorjs-html';
 
 
 
@@ -40,3 +40,8 @@ export const formatDataIntoBlocks = (data)=>{
 //     header: Header, 
 // }
 
+export const formatBlocksToHTML = (content)=>{
+    const edjsParser = edjsHTML();
+    const html = edjsParser.parse(content);
+    return html;
+}
