@@ -3,24 +3,34 @@ import { useAuth } from "@/app/_util/authContext";
 import {useState} from 'react';
 import Editor from "@/app/_shared/editor/Editor";
 import styles from './layout.module.css';
+import { useRouter } from "next/navigation";
 
 const PostWork = ()=>{
     const {user} = useAuth();
-
+    const router = useRouter();
     const [content, setContent] = useState();
 
-    const handleSubmit = e=>{
+    const handleSubmit = async(e)=>{
         e.preventDefault();
         const data = {
-            user: user.id,
+            author: user.id,
             // rating: e.target.rating.value,
             // warning: e.target.warning.value,
             subject: e.target.subject.value,
             title: e.target.title.value,
             summary: e.target.summary.value,
-            content: content.join()
+            chapter: content.join()
         }
-        console.log(data);
+        const options ={
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json',
+              },
+            body: JSON.stringify(data)
+        }
+       const response = fetch('/works/', options)
+    //    .then(router.replace(`/users/{user.id}`))
+        console.log(response);
     }
     return(
         <div className={styles.newwork}>  
