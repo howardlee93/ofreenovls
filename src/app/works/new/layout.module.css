@@ -1,0 +1,13 @@
+
+.newwork{
+    display:flex;
+    flex-direction: column;
+
+}
+.tagCheckbox{
+    /* display: flex; */
+}
+#radiobox{
+    /* text-indent: 30%; */
+    /* display:flex */
+}
