@@ -22,7 +22,7 @@ const Profile = async ({params})=>{
         <h1> Profile</h1>
         <p>user id: {userId}</p>
         <p>Name:{user.name}</p>
-        <p>Bio: {profile.bio}</p>
+        <div dangerouslySetInnerHTML={{__html:profile.bio}}/>
         <ProfileEditButton userId={userId}/> 
         </>
     )
