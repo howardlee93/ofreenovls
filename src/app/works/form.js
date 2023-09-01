@@ -1,7 +1,10 @@
 'use client';
 import Editor from "../_shared/editor/Editor";
+import styles from './form.module.css';
+import {useState} from 'react';
 
 const Form = ()=>{
+    const [content, setContent] = useState('');
     const handleSubmit =e=>{
         e.preventDefault();
     };
