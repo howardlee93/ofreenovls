@@ -1,16 +1,12 @@
 'use client';
 import Editor from "../_shared/editor/Editor";
 import styles from './form.module.css';
-import {useState} from 'react';
 
-const Form = ()=>{
-    const [content, setContent] = useState('');
-    const handleSubmit =e=>{
-        e.preventDefault();
-    };
+const Form = (props)=>{
+    const {handleSubmit, content, setContent} = props;
     
     return(
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.newwork}>
             <div className={styles.tagCheckbox}>
                 <label htmlFor="rating">Rating:</label>
                 <select name="rating" id="rating">
@@ -19,7 +15,7 @@ const Form = ()=>{
                     <option value='m'>Mature</option>
                     <option value='e'>Explicit</option>
                 </select>
-
+            </div>
 
                 <label htmlFor='warning'>Warning:</label>
                 <div id={styles.radiobox}>
@@ -43,10 +39,10 @@ const Form = ()=>{
                 
                 <textarea name="summary" placeholder='summary'/>
 
-                <Editor setContent={setContent} content={content}/>
+                <label htmlFor="content"> Content</label>
+                <Editor name="content" setContent={setContent} content={content}/>
 
 
-            </div>
             <button submit="submit">Preview</button>
             {/* <button submit="submit">Post</button>
             <button submit="submit">Edit</button> */}

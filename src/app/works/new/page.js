@@ -2,8 +2,9 @@
 import { useAuth } from "@/app/_util/authContext";
 import {useState} from 'react';
 import Editor from "@/app/_shared/editor/Editor";
-import styles from './layout.module.css';
 import { useRouter } from 'next/navigation'
+import Form from "../form";
+
 
 const PostWork = ()=>{
     const {user} = useAuth();
@@ -33,9 +34,17 @@ const PostWork = ()=>{
        .then(()=>router.replace(`/users/${user.id}`))
     }
     return(
-        <div className={styles.newwork}>  
+        <div id='new'>  
             <h1>New Work</h1>
-            <form onSubmit={handleSubmit}>
+            <Form handleSubmit={handleSubmit} content={content} setContent={setContent}/>
+        </div>
+    )
+
+}
+
+export default PostWork;
+
+{/* <form onSubmit={handleSubmit}>
             <div className={styles.tagCheckbox}>
                 <label htmlFor="rating">Rating:</label>
                 <select name="rating" id="rating">
@@ -74,12 +83,6 @@ const PostWork = ()=>{
             </div>
             <button submit="submit">Preview</button>
             {/* <button submit="submit">Post</button>
-            <button submit="submit">Edit</button> */}
+            <button submit="submit">Edit</button> *
 
-            </form>
-        </div>
-    )
-
-}
-
-export default PostWork;
+        </form>  */}
