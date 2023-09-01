@@ -13,9 +13,10 @@ const WorkPage = async ({params})=>{
             subject:true
         }
     })
+    const multiC = workText.chapters.length > 1;
     return(
         <>
-        <WorkToolBar/>
+        <WorkToolBar multiC={multiC}/>
         <h1>{workText.title}</h1>
         <h2>{workText.summary}</h2>
         <p>by <Link href={`/users/${workText.authorId}`}>{workText.author.name}</Link></p>

@@ -1,0 +1,14 @@
+.toolbar{
+    display:flex;
+    flex-direction: row;
+    gap: 3%
+}
+
+
+.toolbutton{
+    margin: 1%;
+    padding:0.5%;
+    border: 2px solid #ff6347;
+    border-radius: 5px;
+    border-style: groove;
+}
