@@ -41,7 +41,7 @@ const Login = ()=> {
     
     return(
         <>
-        <h1 onClick={()=>setShowLogin(!showLogin)}> Login</h1>
+        <p onClick={()=>setShowLogin(!showLogin)}> Login</p>
         {showLogin ? <form className={styles.menu}
         onSubmit={handleSubmit}
         >

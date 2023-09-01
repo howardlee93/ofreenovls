@@ -16,6 +16,12 @@
   }
 }
 
+h1{
+  color:#ff6347;
+  font-family: serif;
+  font-size: larger;
+}
+
 /* button{
    border: 2px solid red;
   border-radius: 5px;
