@@ -36,7 +36,7 @@ const PostWork = ()=>{
     return(
         <div id='new'>  
             <h1>New Work</h1>
-            <Form handleSubmit={handleSubmit} content={content} setContent={setContent}/>
+            <Form handleSubmit={handleSubmit} content={content} setContent={setContent} />
         </div>
     )
 

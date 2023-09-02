@@ -3,8 +3,8 @@ import Editor from "../_shared/editor/Editor";
 import styles from './form.module.css';
 
 const Form = (props)=>{
-    const {handleSubmit, content, setContent} = props;
-    
+    const {handleSubmit, content, setContent, workInfo} = props;
+
     return(
         <form onSubmit={handleSubmit} className={styles.newwork}>
             <div className={styles.tagCheckbox}>
@@ -28,19 +28,19 @@ const Form = (props)=>{
                 </div>
 
                 
-                <input type='text' name="subject" placeholder="subject"/>
+                <input type='text' name="subject" placeholder="subject" defaultValue={workInfo?.subject.name ||''}/>
 
-                <input type='text' name="tags" placeholder="tags"/>
+                <input type='text' name="tags" placeholder="tags" />
 
                 <label htmlFor='tags'>Multi-chaptered?:</label>
                 <input type='checkbox' name="chapters"/>
 
-                <input type='text' name="title" placeholder="title"/>
+                <input type='text' name="title" placeholder="title" defaultValue={workInfo?.title ||''}/>
                 
-                <textarea name="summary" placeholder='summary'/>
+                <textarea name="summary" placeholder='summary' defaultValue={workInfo?.summary ||''}/>
 
                 <label htmlFor="content"> Content</label>
-                <Editor name="content" setContent={setContent} content={content}/>
+                <Editor name="content" setContent={setContent} content={content||''}/>
 
 
             <button submit="submit">Preview</button>
