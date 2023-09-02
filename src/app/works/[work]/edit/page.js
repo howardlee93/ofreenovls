@@ -1,31 +1,42 @@
-'use client';
-import {useState, useEffect} from 'react';
-import Form from '../../form';
+// 'use client';
+// import {useState, useEffect} from 'react';
+// import Form from '../../form';
+import { PrismaClient } from "@prisma/client";
+import EditPageForm from "./EditPageForm";
 
-const EditPage = ({params}) =>{
+const EditPage = async ({params}) =>{
     const {work} = params;
-    const [content, setContent] = useState('');
-    const [workInfo, setWorkInfo] = useState();
-    const handleSubmit= e=>{
-        e.preventDefault();
-    };
+    const prisma = new PrismaClient();
+    const workInfo = await prisma.work.findUnique({
+        where: {id: parseInt(work)},
+        include:{
+            chapters:true,
+            subject: true
+        }
+    })
+    // const [content, setContent] = useState('');
+    // const [workInfo, setWorkInfo] = useState();
+    // const handleSubmit= e=>{
+    //     e.preventDefault();
+    // };
 
-    useEffect(()=>{
-        fetch(`/works?id=${work}` )
-        .then(response => response.json())
-        // .then(res => res.find((workElem)=> workElem.id === parseInt(work)))
-        .then(data => setWorkInfo(data[0]));
-    },[]);
+    // useEffect(()=>{
+    //     fetch(`/works?id=${work}` )
+    //     .then(response => response.json())
+    //     // .then(res => res.find((workElem)=> workElem.id === parseInt(work)))
+    //     .then(data => setWorkInfo(data[0]));
+    // },[]);
 
     return (
         <>
         {workInfo ?
         <>
-        <h1>Edit {workInfo.title}</h1>
+        <EditPageForm workInfo={workInfo}/>
+        {/* <h1>Edit {workInfo.title}</h1>
         <Form content={content}
             setContent={setContent}
             handleSubmit={handleSubmit}
-        />
+        /> */}
         </>
         :""}
         </>

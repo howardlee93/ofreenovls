@@ -5,14 +5,18 @@ const Profile = async ({params})=>{
 
     const userId = parseInt(params.id);
     const prisma = new PrismaClient();
-    const profile = await prisma.profile.findUnique({
-        where:{
-            userId
-        }
-    })
+    // const profile = await prisma.profile.findUnique({
+    //     where:{
+    //         userId
+    //     },
+
+    // })
     const user = await prisma.user.findUnique({
         where:{
             id:userId
+        },
+        include:{
+            profile: true
         }
     })
       
@@ -22,7 +26,7 @@ const Profile = async ({params})=>{
         <h1> Profile</h1>
         <p>user id: {userId}</p>
         <p>Name:{user.name}</p>
-        <div dangerouslySetInnerHTML={{__html:profile.bio}}/>
+        <div dangerouslySetInnerHTML={{__html:user.profile.bio}}/>
         <ProfileEditButton userId={userId}/> 
         </>
     )

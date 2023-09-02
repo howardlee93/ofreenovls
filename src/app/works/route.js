@@ -6,11 +6,17 @@ const prisma = new PrismaClient();
 
 export const GET = async(req, res)=>{ 
     const query = req.nextUrl.searchParams; // how to do with multiple filters
-    console.log(query.get('id'))
+    console.log(query)
+    const id = parseInt(query.get('id'));
+    const subject = query.get('subject') || null;
+    const tags = query.get('tags') || null;
     const works = await prisma.work.findMany({
-        where:{id: parseInt(query.get('id'))}
+        where:{
+            id,
+            // subject,
+            // tags
+        }
     });
-
     return NextResponse.json(works);
 };
 
