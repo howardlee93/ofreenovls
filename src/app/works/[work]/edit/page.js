@@ -10,12 +10,11 @@ const EditPage = ({params}) =>{
         e.preventDefault();
     };
 
-
     useEffect(()=>{
-        fetch('/works')
+        fetch(`/works?id=${work}` )
         .then(response => response.json())
-        .then(res => res.find((workElem)=> workElem.id === parseInt(work)))
-        .then(data => setWorkInfo(data));
+        // .then(res => res.find((workElem)=> workElem.id === parseInt(work)))
+        .then(data => setWorkInfo(data[0]));
     },[]);
 
     return (

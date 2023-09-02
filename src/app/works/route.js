@@ -1,13 +1,15 @@
 
 import { PrismaClient } from "@prisma/client";
-import { NextResponse } from "next/server";
+import {NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
 export const GET = async(req, res)=>{ 
-
-    // req = await req.json(); // how to do with multiple filters
-    const works = await prisma.work.findMany();
+    const query = req.nextUrl.searchParams; // how to do with multiple filters
+    console.log(query.get('id'))
+    const works = await prisma.work.findMany({
+        where:{id: parseInt(query.get('id'))}
+    });
 
     return NextResponse.json(works);
 };
