@@ -5,12 +5,7 @@ const Profile = async ({params})=>{
 
     const userId = parseInt(params.id);
     const prisma = new PrismaClient();
-    // const profile = await prisma.profile.findUnique({
-    //     where:{
-    //         userId
-    //     },
-
-    // })
+    
     const user = await prisma.user.findUnique({
         where:{
             id:userId
