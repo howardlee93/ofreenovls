@@ -4,19 +4,15 @@ import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
-export const GET = async(req,res)=>{ 
+export const GET = async(req, res)=>{ 
 
     // req = await req.json(); // how to do with multiple filters
-    console.log(req)
-    // const works = await prisma.work.findMany({
-    //     where:{
-    //         [filter]:filter
-    //     }
-    // })
-    // return NextResponse.json(works);
+    const works = await prisma.work.findMany();
+
+    return NextResponse.json(works);
 };
 
-export const POST = async(req,res)=>{
+export const POST = async(req, res)=>{
     const {title, summary, chapter,
         subject, author
     } = await req.json();
