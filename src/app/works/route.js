@@ -56,14 +56,15 @@ export const PUT = async(req,res)=>{
     const editedWork = await prisma.update({
         where: {id},
         data:{
-            title, summary,
-            chapters:{
-                update:{
-                    where:{chapter},
-                    data:{chapter}
-                }
-            },
-            subject
+            title, 
+            summary,
+            // chapters:{
+            //     update:{
+            //         where:{chapter},
+            //         data:{chapter}
+            //     }
+            // },
+            // subject
         }
 
     })
