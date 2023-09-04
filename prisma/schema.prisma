@@ -45,8 +45,9 @@ model Work {
   published Boolean @default(false)
   author    User?   @relation(fields: [authorId], references: [id])
   authorId  Int
-  subject   Subject[] //@relation(fields:[subjectId], references: [id])
+  subject   Subject[]//? @relation(fields:[subjectId], references: [id])
   // subjectId Int
+  //tag Tag[]
 }
 
 //chapter

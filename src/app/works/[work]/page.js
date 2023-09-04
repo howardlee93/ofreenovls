@@ -20,7 +20,7 @@ const WorkPage = async ({params})=>{
         <h1>{workText.title}</h1>
         <h2>{workText.summary}</h2>
         <p>by <Link href={`/users/${workText.authorId}`}>{workText.author.name}</Link></p>
-        <p>Subject: {workText.subject.name}</p>
+        <p>Subject: {workText.subject[0].name}</p>
         <div dangerouslySetInnerHTML={{__html:workText.chapters[0].content}}/>
         </>
     )
