@@ -50,24 +50,23 @@ export const POST = async(req, res)=>{
 
 export const PUT = async(req,res)=>{
     const {title, summary, chapter,
-        subject, author, id
+        subject, id
     } = await req.json();
-
-    const editedWork = await prisma.update({
-        where: {id},
-        data:{
-            title, 
-            summary,
-            // chapters:{
-            //     update:{
-            //         where:{chapter},
-            //         data:{chapter}
-            //     }
-            // },
-            // subject
-        }
-
-    })
+    console.log(subject);
+    // const editedWork = await prisma.update({
+    //     where: {id},
+    //     data:{
+    //         title, 
+    //         summary,
+    //         // chapters:{
+    //         //     update:{
+    //         //         where:{chapter},
+    //         //         data:{chapter}
+    //         //     }
+    //         // },
+    //         // subject
+    //     }
+    // })
     
 }
 export const DELETE = async(req,res)=>{
