@@ -10,8 +10,9 @@ const EditPage = async ({params}) =>{
     const workInfo = await prisma.work.findUnique({
         where: {id: parseInt(work)},
         include:{
-            chapters:true,
-            subject: true
+            chapters: true,
+            subject: true,
+            tag: true
         }
     })
     
