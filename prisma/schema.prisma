@@ -48,6 +48,8 @@ model Work {
   subject   Subject[]//? @relation(fields:[subjectId], references: [id])
   // subjectId Int
   tag Tag[]
+  rating    String
+  warning   String
 }
 
 //chapter
