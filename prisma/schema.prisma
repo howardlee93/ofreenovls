@@ -21,9 +21,10 @@ model User {
   email         String?   @unique
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
-  posts         Work[]
+  works         Work[]
   profile       Profile? 
   role          Role 
+  
   @@map(name: "users")
 }
 

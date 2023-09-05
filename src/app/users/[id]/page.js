@@ -9,7 +9,7 @@ const UserDashboard = async ({params})=>{
             id: parseInt(id)
         },
         include:{
-            posts:true
+            works:true
         }
 
     });
@@ -18,9 +18,9 @@ const UserDashboard = async ({params})=>{
         <>
             <h1>{user.name}!</h1>
             <h2>Works</h2>
-            {user.posts.slice(0,5).map(post=>{
+            {user.works.slice(0,5).map(work=>{
                 return(
-                    <p key={post.id}><Link href={`/works/${post.id}`}>{post.title}</Link></p>
+                    <p key={post.id}><Link href={`/works/${work.id}`}>{work.title}</Link></p>
                 )
             })}
             <h2>Bookmarks</h2>
