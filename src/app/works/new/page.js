@@ -17,11 +17,15 @@ const PostWork = ()=>{
             author: user.id,
             // rating: e.target.rating.value,
             // warning: e.target.warning.value,
-            subject: e.target.subject.value,
+            subject:  ','.indexOf(e.target.subject.value) !== -1 ? e.target.subject.value.split(',') :
+                [e.target.subject.value],
             title: e.target.title.value,
             summary: e.target.summary.value,
+            tags: ','.indexOf(e.target.tags.value) !== -1 ? e.target.tags.value.split(',') :
+                [e.target.tags.value],
             chapter: content.join()
         }
+        console.log(data)
         const options ={
             method:'POST',
             headers: {

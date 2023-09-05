@@ -22,9 +22,9 @@ export const GET = async(req, res)=>{
 
 export const POST = async(req, res)=>{
     const {title, summary, chapter,
-        subject, author
+        subject, author, tags
     } = await req.json();
-    const subjectNames = subject.split(',');
+    const subjectNames = subject//.split(',');
     const newWork = await prisma.work.create({
         data:{
             title,
@@ -40,6 +40,14 @@ export const POST = async(req, res)=>{
                     }
                 })
             },
+            tag:{
+                connectOrCreate: tags.map(t =>{ 
+                    return{// check if subject exists first
+                        where:{ name: t},
+                        create: {name:t}
+                    }
+                })
+            },
             author: {connect: {id: parseInt(author)}}
         }
     })
@@ -47,8 +55,8 @@ export const POST = async(req, res)=>{
 }
 
 export const PUT = async(req, res)=>{
-    const {title, summary, chapter, subject, id } = await req.json();
-    const subjectnames = subject.split(',');
+    const {title, summary, chapter, subject, id, tags } = await req.json();
+    const subjectnames = subject//.split(',');
     const editedWork = await prisma.work.update({
             where: {id :parseInt(id)},
             data:{
@@ -64,6 +72,15 @@ export const PUT = async(req, res)=>{
                         }
                     })
                 },
+                tag:{
+                    set:[],
+                    connectOrCreate: tags.map((t) =>{ 
+                        return{// check if subject exists first
+                            where:{ name: t},
+                            create: {name: t}
+                        }
+                    })
+                }
             },
             include:{
                 subject:true

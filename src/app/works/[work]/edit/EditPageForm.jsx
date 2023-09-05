@@ -10,8 +10,11 @@ const EditPageForm = (props)=>{
         const data ={
             id:workInfo.id,
             title: e.target.title.value,
-            subject: e.target.subject.value,
+            subject:  ','.indexOf(e.target.subject.value) !== -1 ? e.target.subject.value.split(',') :
+               [ e.target.subject.value],
             summary: e.target.summary.value,
+            tags: ','.indexOf(e.target.tags.value) !== -1 ? e.target.tags.value.split(',') :
+                [e.target.tags.value],
         };
         const options ={
             method:'PUT',

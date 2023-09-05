@@ -10,19 +10,23 @@ const WorkPage = async ({params})=>{
         include:{
             chapters:true,
             author:true,
-            subject:true
+            subject:true,
+            tag: true
         }
     })
     const multiC = workText.chapters.length > 1;
-    const subNames = workText.subject.map(sub => sub.name);
-    console.log(subNames);
+    const subNames = workText.subject.map(sub => sub.name).join(',');
+    const tagNames =  workText.tag.map(t => t.name).join(',');
+    // const names = workText.subject.reduce((acc, val) => acc +','+val )
+
     return(
         <>
         <WorkToolBar multiC={multiC}/>
         <h1>{workText.title}</h1>
         <h2>{workText.summary}</h2>
         <p>by <Link href={`/users/${workText.authorId}`}>{workText.author.name}</Link></p>
-        <p>Subjects: {subNames.join(',')}</p>
+        <p>Subjects: {subNames}</p>
+        <p>tags: {tagNames}</p>
         <div dangerouslySetInnerHTML={{__html:workText.chapters[0].content}}/>
         </>
     )

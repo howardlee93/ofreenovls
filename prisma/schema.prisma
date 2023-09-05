@@ -47,7 +47,7 @@ model Work {
   authorId  Int
   subject   Subject[]//? @relation(fields:[subjectId], references: [id])
   // subjectId Int
-  //tag Tag[]
+  tag Tag[]
 }
 
 //chapter
@@ -70,10 +70,12 @@ model Subject {
   @@unique([name])
 }
 
-
-// model Tag {
-
-// }
+model Tag {
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(50)
+  works Work[]
+  @@unique([name])
+}
 
 // model Bookmark {
 
