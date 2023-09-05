@@ -32,7 +32,7 @@ const WorkPage = async ({params})=>{
         </p>
         <p>Tags:
         { workText.tag.map(tag=>
-            <Link key={tag.id} href={`/subjects/${tag.id}`}>{tag.name}</Link>
+            <Link key={tag.id} href={`/tags/${tag.id}`}>{tag.name}</Link>
         )}
         </p>
         <div dangerouslySetInnerHTML={{__html:workText.chapters[0].content}}/>
