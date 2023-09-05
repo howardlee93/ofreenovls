@@ -4,6 +4,8 @@ import styles from './form.module.css';
 
 const Form = (props)=>{
     const {handleSubmit, content, setContent, workInfo} = props;
+    const subNames = workInfo?.subject.map(s => s.name) ||'';
+    const tagNames = workInfo?.tag.map(t => t.name) ||'';
 
     return(
         <form onSubmit={handleSubmit} className={styles.newwork}>
@@ -28,11 +30,11 @@ const Form = (props)=>{
                 </div>
 
                 
-                <input type='text' name="subject" placeholder="subject" defaultValue={workInfo?.subject.name ||''}/>
+                <input type='text' name="subject" placeholder="subject" defaultValue={subNames}/>
 
-                <input type='text' name="tags" placeholder="tags" />
+                <input type='text' name="tags" placeholder="tags" defaultValue={tagNames} />
 
-                <label htmlFor='tags'>Multi-chaptered?:</label>
+                <label htmlFor='chapters'>Multi-chaptered?:</label>
                 <input type='checkbox' name="chapters"/>
 
                 <input type='text' name="title" placeholder="title" defaultValue={workInfo?.title ||''}/>
