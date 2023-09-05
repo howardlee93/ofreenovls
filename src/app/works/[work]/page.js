@@ -21,12 +21,20 @@ const WorkPage = async ({params})=>{
 
     return(
         <>
-        <WorkToolBar multiC={multiC}/>
+        <WorkToolBar multiC={multiC} params={work}/>
         <h1>{workText.title}</h1>
         <h2>{workText.summary}</h2>
         <p>by <Link href={`/users/${workText.authorId}`}>{workText.author.name}</Link></p>
-        <p>Subjects: {subNames}</p>
-        <p>tags: {tagNames}</p>
+        <p>Subjects:
+        { workText.subject.map(sub=>
+            <Link key={sub.id} href={`/subjects/${sub.id}`}>{sub.name}</Link>
+        )} 
+        </p>
+        <p>Tags:
+        { workText.tag.map(tag=>
+            <Link key={tag.id} href={`/subjects/${tag.id}`}>{tag.name}</Link>
+        )}
+        </p>
         <div dangerouslySetInnerHTML={{__html:workText.chapters[0].content}}/>
         </>
     )

@@ -19,7 +19,7 @@ const WorkToolBar = (props)=>{
         {user.id  ? // only users can bookmark and edit 
         <>
             <button className={styles.toolbutton}>Bookmark</button>
-            <button className={styles.toolbutton}>Edit</button>
+            <button className={styles.toolbutton}><Link href={`/works/${props.params}/edit`}>Edit </Link></button>
         </>
         :''
         }
