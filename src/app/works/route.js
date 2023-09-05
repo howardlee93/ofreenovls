@@ -48,8 +48,7 @@ export const POST = async(req, res)=>{
 
 export const PUT = async(req, res)=>{
     const {title, summary, chapter, subject, id } = await req.json();
-    //might have to use transaction??
-    const subjectnames = subject.split('');
+    const subjectnames = subject.split(',');
     const editedWork = await prisma.work.update({
             where: {id :parseInt(id)},
             data:{
@@ -70,29 +69,10 @@ export const PUT = async(req, res)=>{
                 subject:true
             }
     })
-
-    // const result = await prisma.work.update({
-    //     where: {
-    //       id: parseInt(id),
-    //     },
-    //     data: {
-    //         subject: {
-    //             connectOrCreate: {
-    //                 where:{ name: subject},
-    //                 create:{ name: subject}
-    //             },
-    //         },
-    //     },
-    //     include: {
-    //         subject: true,
-    //     },
-    //   })
-    //   console.log(result)
-
-
     return NextResponse.json(editedWork);
-    
-}
+};
+
+
 export const DELETE = async(req,res)=>{
     
 }
