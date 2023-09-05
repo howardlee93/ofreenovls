@@ -14,13 +14,15 @@ const WorkPage = async ({params})=>{
         }
     })
     const multiC = workText.chapters.length > 1;
+    const subNames = workText.subject.map(sub => sub.name);
+    console.log(subNames);
     return(
         <>
         <WorkToolBar multiC={multiC}/>
         <h1>{workText.title}</h1>
         <h2>{workText.summary}</h2>
         <p>by <Link href={`/users/${workText.authorId}`}>{workText.author.name}</Link></p>
-        <p>Subject: {workText.subject[0].name}</p>
+        <p>Subjects: {subNames.join(',')}</p>
         <div dangerouslySetInnerHTML={{__html:workText.chapters[0].content}}/>
         </>
     )

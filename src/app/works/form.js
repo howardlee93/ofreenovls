@@ -4,6 +4,7 @@ import styles from './form.module.css';
 
 const Form = (props)=>{
     const {handleSubmit, content, setContent, workInfo} = props;
+    const subNames = workInfo?.subject.map(s => s.name) ||'';
 
     return(
         <form onSubmit={handleSubmit} className={styles.newwork}>
@@ -28,7 +29,7 @@ const Form = (props)=>{
                 </div>
 
                 
-                <input type='text' name="subject" placeholder="subject" defaultValue={workInfo?.subject.name ||''}/>
+                <input type='text' name="subject" placeholder="subject" defaultValue={subNames}/>
 
                 <input type='text' name="tags" placeholder="tags" />
 
