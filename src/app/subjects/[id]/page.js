@@ -16,7 +16,7 @@ const SubjectIdPage = async({params}) =>{
         <>
             <h1>{subject.name}</h1>
             {works.map(work =>
-                <Link href={`/works/${work.id}`} key={work.id} replace>{work.title}</Link>
+                <p  key={work.id} ><Link href={`/works/${work.id}`}replace>{work.title}</Link></p>
             )}
         </>
     )
