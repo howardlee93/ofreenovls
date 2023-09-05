@@ -24,7 +24,7 @@ export const POST = async(req, res)=>{
     const {title, summary, chapter,
         subject, author
     } = await req.json();
-
+    const subjectNames = subject.split(',');
     const newWork = await prisma.work.create({
         data:{
             title,
@@ -33,10 +33,10 @@ export const POST = async(req, res)=>{
                 {content:chapter}
             ]},
             subject:{
-                connectOrCreate: subject.map(el =>{ 
+                connectOrCreate: subjectNames.map(subname =>{ 
                     return{// check if subject exists first
-                        where:{ name: el},
-                        create: {name:el}
+                        where:{ name: subname},
+                        create: {name:subname}
                     }
                 })
             },
@@ -49,50 +49,48 @@ export const POST = async(req, res)=>{
 export const PUT = async(req, res)=>{
     const {title, summary, chapter, subject, id } = await req.json();
     //might have to use transaction??
-
-    // const editedWork = await prisma.$transaction([
-    //     prisma.work.update({
-    //         where: {id :parseInt(id)},
-    //         data:{
-    //             title, 
-    //             summary,
-    //             subject:{
-    //                 disconnect: true
-    //             },
-    //         },
-            // include:{subject:true}
-    //     }),
-        // prisma.work.update({
-        //     where: {id :parseInt(id)},
-        //     data:{
-        //         subject:{
-        //             connectOrCreate:{
-        //                 where:{name: subject},
-        //                 create:{name:subject}
-        //             }
-        //         }
-        //     }
-        // })
-    // ])
-
-    const result = await prisma.work.update({
-        where: {
-          id: parseInt(id),
-        },
-        data: {
-            subject: {
-                connectOrCreate: {
-                    where:{ name: subject},
-                    create:{ name: subject}
+    const subjectnames = subject.split('');
+    const editedWork = await prisma.work.update({
+            where: {id :parseInt(id)},
+            data:{
+                title, 
+                summary,
+                subject:{
+                    set: [],
+                    connectOrCreate: subjectnames.map((subname) =>{ 
+                        console.log(subname)
+                        return{// check if subject exists first
+                            where:{ name: subname},
+                            create: {name: subname}
+                        }
+                    })
                 },
             },
-        },
-        include: {
-            subject: true,
-        },
-      })
-      console.log(result)
-    return NextResponse.json(result);
+            include:{
+                subject:true
+            }
+    })
+
+    // const result = await prisma.work.update({
+    //     where: {
+    //       id: parseInt(id),
+    //     },
+    //     data: {
+    //         subject: {
+    //             connectOrCreate: {
+    //                 where:{ name: subject},
+    //                 create:{ name: subject}
+    //             },
+    //         },
+    //     },
+    //     include: {
+    //         subject: true,
+    //     },
+    //   })
+    //   console.log(result)
+
+
+    return NextResponse.json(editedWork);
     
 }
 export const DELETE = async(req,res)=>{
