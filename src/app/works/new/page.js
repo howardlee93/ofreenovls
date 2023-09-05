@@ -17,11 +17,11 @@ const PostWork = ()=>{
             author: user.id,
             // rating: e.target.rating.value,
             // warning: e.target.warning.value,
-            subject:  ','.indexOf(e.target.subject.value) !== -1 ? e.target.subject.value.split(',') :
+            subject:  e.target.subject.value.indexOf(',') !== -1 ? e.target.subject.value.split(',') :
                 [e.target.subject.value],
             title: e.target.title.value,
             summary: e.target.summary.value,
-            tags: ','.indexOf(e.target.tags.value) !== -1 ? e.target.tags.value.split(',') :
+            tags: e.target.tags.value.indexOf(',') !== -1 ? e.target.tags.value.split(',') :
                 [e.target.tags.value],
             chapter: content.join()
         }
@@ -35,7 +35,7 @@ const PostWork = ()=>{
         };
 
        fetch('/works/', options)
-       .then(()=>router.replace(`/users/${user.id}`))
+       .then(()=>router.replace(`/users/${user.id}`)) // navigate to works/workID? 
     }
     return(
         <div id='new'>  
