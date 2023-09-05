@@ -22,11 +22,11 @@ const Form = (props)=>{
                 <label htmlFor='warning'>Warning:</label>
                 <div id={styles.radiobox}>
                     <label htmlFor='none'>Decline to warn</label>
-                    <input type="radio" name="none"/> 
+                    <input type="radio" name="warning" value="none"/> 
                     <label htmlFor='none'>Violence</label>
-                    <input type="radio" name="none"/> 
+                    <input type="radio" name="warning" value="violence"/> 
                     <label htmlFor='none'>Sex</label>
-                    <input type="radio" name="none"/> 
+                    <input type="radio" name="warning" value="sex"/> 
                 </div>
 
                 

@@ -15,8 +15,8 @@ const PostWork = ()=>{
         e.preventDefault();
         const data = {
             author: user.id,
-            // rating: e.target.rating.value,
-            // warning: e.target.warning.value,
+            rating: e.target.rating.value,
+            warning: e.target.warning.value,
             subject:  e.target.subject.value.indexOf(',') !== -1 ? e.target.subject.value.split(',') :
                 [e.target.subject.value],
             title: e.target.title.value,
@@ -26,16 +26,16 @@ const PostWork = ()=>{
             chapter: content.join()
         }
         console.log(data)
-        const options ={
-            method:'POST',
-            headers: {
-                'Content-Type': 'application/json',
-              },
-            body: JSON.stringify(data)
-        };
+    //     const options ={
+    //         method:'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //           },
+    //         body: JSON.stringify(data)
+    //     };
 
-       fetch('/works/', options)
-       .then(()=>router.replace(`/users/${user.id}`)) // navigate to works/workID? 
+    //    fetch('/works/', options)
+    //    .then(()=>router.replace(`/users/${user.id}`)) // navigate to works/workID? 
     }
     return(
         <div id='new'>  
