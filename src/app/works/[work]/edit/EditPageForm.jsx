@@ -18,7 +18,10 @@ const EditPageForm = (props)=>{
             summary: e.target.summary.value,
             tags: e.target.tags.value.indexOf(',') !== -1 ? e.target.tags.value.split(',') :
                 [e.target.tags.value],
+            rating: e.target.rating.value,
+            warning: e.target.warning.value,        
         };
+
         const options ={
             method:'PUT',
             headers: {
@@ -31,7 +34,6 @@ const EditPageForm = (props)=>{
         fetch('/works/', options)
         .then(()=> router.refresh())
         .then(()=> router.push(`/works/${workInfo.id}`))
-        // console.log(data)
 
     };
 
