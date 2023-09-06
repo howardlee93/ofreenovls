@@ -1,8 +1,8 @@
 import { PrismaClient } from "@prisma/client";
-import WorkToolBar from "./WorkToolbar";
 import Link from "next/link";
+import WorkToolBar from "../WorkToolbar";
 
-const WorkPage = async ({params})=>{
+const EntireWorkPage = async({params}) =>{
     const {work} = params;
     const prisma = new PrismaClient();
     const workText = await prisma.work.findUnique({
@@ -15,7 +15,6 @@ const WorkPage = async ({params})=>{
         }
     })
 
-    const multiC = workText.chapters.length > 1;
     const warnings ={
         'none':'Decline to warn',
         'violence': 'Violence',
@@ -30,7 +29,7 @@ const WorkPage = async ({params})=>{
   
     return(
         <>
-        <WorkToolBar multiC={multiC} params={work}/>
+        <WorkToolBar multiC={null} params={work}/>
         <h1>{workText.title}</h1>
         <h2>{workText.summary}</h2>
         <p>by <Link href={`/users/${workText.authorId}`}>{workText.author.name}</Link></p>
@@ -46,9 +45,12 @@ const WorkPage = async ({params})=>{
             <Link key={tag.id} href={`/tags/${tag.id}`}>{tag.name}</Link>
         )}
         </p>
-        <div dangerouslySetInnerHTML={{__html:workText.chapters[0].content}}/>
+        {workText.chapters.map(chapt =>
+            <div key={chapt.id} dangerouslySetInnerHTML={{__html: chapt.content}}/>
+        )}
         </>
     )
+
 }
 
-export default WorkPage;
+export default EntireWorkPage;
