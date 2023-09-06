@@ -11,7 +11,7 @@ const Form = (props)=>{
         <form onSubmit={handleSubmit} className={styles.newwork}>
             <div className={styles.tagCheckbox}>
                 <label htmlFor="rating">Rating:</label>
-                <select name="rating" id="rating">
+                <select name="rating" id="rating" defaultValue={workInfo?.rating}>
                     <option value='pg'>PG </option>
                     <option value='pg13'>PG-13</option>
                     <option value='m'>Mature</option>
@@ -22,11 +22,11 @@ const Form = (props)=>{
                 <label htmlFor='warning'>Warning:</label>
                 <div id={styles.radiobox}>
                     <label htmlFor='none'>Decline to warn</label>
-                    <input type="radio" name="warning" value="none"/> 
+                    <input type="radio" name="warning" value="none" defaultChecked={workInfo?.warning}/> 
                     <label htmlFor='none'>Violence</label>
-                    <input type="radio" name="warning" value="violence"/> 
+                    <input type="radio" name="warning" value="violence" defaultChecked={workInfo?.warning}/> 
                     <label htmlFor='none'>Sex</label>
-                    <input type="radio" name="warning" value="sex"/> 
+                    <input type="radio" name="warning" value="sex" defaultChecked={workInfo?.warning}/> 
                 </div>
 
                 

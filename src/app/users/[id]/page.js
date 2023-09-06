@@ -20,7 +20,7 @@ const UserDashboard = async ({params})=>{
             <h2>Works</h2>
             {user.works.slice(0,5).map(work=>{
                 return(
-                    <p key={post.id}><Link href={`/works/${work.id}`}>{work.title}</Link></p>
+                    <p key={work.id}><Link href={`/works/${work.id}`}>{work.title}</Link></p>
                 )
             })}
             <h2>Bookmarks</h2>

@@ -22,16 +22,20 @@ export const GET = async(req, res)=>{
 
 export const POST = async(req, res)=>{
     const {title, summary, chapter,
-        subject, author, tags
+        subject, author, tags, rating, warning
     } = await req.json();
     const subjectNames = subject//.split(',');
     const newWork = await prisma.work.create({
         data:{
             title,
             summary,
-            chapters:{create:[
-                {content:chapter}
-            ]},
+            rating,
+            warning,
+            chapters:{
+                create:[
+                    {content:chapter}
+                ]
+            },
             subject:{
                 connectOrCreate: subjectNames.map(subname =>{ 
                     return{// check if subject exists first
@@ -55,13 +59,15 @@ export const POST = async(req, res)=>{
 }
 
 export const PUT = async(req, res)=>{
-    const {title, summary, chapter, subject, id, tags } = await req.json();
+    const {title, summary, chapter, subject, id, tags, rating, warning } = await req.json();
     const subjectnames = subject//.split(',');
     const editedWork = await prisma.work.update({
             where: {id :parseInt(id)},
             data:{
                 title, 
                 summary,
+                rating,
+                warning,
                 subject:{
                     set: [],
                     connectOrCreate: subjectnames.map((subname) =>{ 

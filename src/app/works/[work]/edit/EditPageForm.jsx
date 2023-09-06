@@ -27,6 +27,7 @@ const EditPageForm = (props)=>{
               // Body of the request is the JSON data we created above.
               body: JSON.stringify(data),
         }
+        console.log(data);
         fetch('/works/', options)
         .then(()=> router.refresh())
         .then(()=> router.push(`/works/${workInfo.id}`))
