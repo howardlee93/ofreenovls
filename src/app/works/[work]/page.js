@@ -15,10 +15,18 @@ const WorkPage = async ({params})=>{
         }
     })
     const multiC = workText.chapters.length > 1;
-    const subNames = workText.subject.map(sub => sub.name).join(',');
-    const tagNames =  workText.tag.map(t => t.name).join(',');
-    // const names = workText.subject.reduce((acc, val) => acc +','+val )
-
+    const warnings ={
+        'none':'Decline to warn',
+        'violence': 'Violence',
+        'sex':'Sexual Content'
+    };
+    const ratings = {
+        'pg':'PG',
+        'pg13':'PG-13', 
+        'm':'Mature', 
+        'e':'Explicit'
+    };
+  
     return(
         <>
         <WorkToolBar multiC={multiC} params={work}/>
@@ -30,6 +38,8 @@ const WorkPage = async ({params})=>{
             <Link key={sub.id} href={`/subjects/${sub.id}`}>{sub.name}</Link>
         )} 
         </p>
+        <p> Rated: {ratings[workText.rating]}</p>
+        <p>Warning: {warnings[workText.warning]}</p>
         <p>Tags:
         { workText.tag.map(tag=>
             <Link key={tag.id} href={`/tags/${tag.id}`}>{tag.name}</Link>

@@ -23,9 +23,9 @@ const Form = (props)=>{
                 <div id={styles.radiobox}>
                     <label htmlFor='none'>Decline to warn</label>
                     <input type="radio" name="warning" value="none" defaultChecked={workInfo?.warning === 'none'}/> 
-                    <label htmlFor='none'>Violence</label>
+                    <label htmlFor='violence'>Violence</label>
                     <input type="radio" name="warning" value="violence" defaultChecked={workInfo?.warning === 'violence'}/> 
-                    <label htmlFor='none'>Sex</label>
+                    <label htmlFor='sex'>Sexual Content</label>
                     <input type="radio" name="warning" value="sex" defaultChecked={workInfo?.warning ==='sex'}/> 
                 </div>
 
