@@ -1,4 +1,4 @@
-import { Prisma, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import WorkToolBar from "./WorkToolbar";
 import Link from "next/link";
 
@@ -14,6 +14,15 @@ const WorkPage = async ({params})=>{
             tag: true
         }
     })
+
+    async function generateStaticParams() {
+        const posts = await fetch('https://.../posts').then((res) => res.json())
+       
+        return posts.map((post) => ({
+          slug: post.slug,
+        }))
+      }
+
     const multiC = workText.chapters.length > 1;
     const warnings ={
         'none':'Decline to warn',
