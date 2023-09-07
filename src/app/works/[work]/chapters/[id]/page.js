@@ -9,10 +9,11 @@ import { PrismaClient } from "@prisma/client";
 //     }))
 //   }
 const WorkChapterPage = async({params})=>{
-    const {work, id} = params;
+    const {id} = params;
     const prisma = new PrismaClient();
+    console.log(id)
     const chapter = await prisma.chapter.findUnique({
-        where:{workId: parseInt(work)}
+        where:{id}
     })
     return(
         <>

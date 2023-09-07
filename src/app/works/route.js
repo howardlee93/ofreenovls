@@ -59,7 +59,7 @@ export const POST = async(req, res)=>{
 }
 
 export const PUT = async(req, res)=>{
-    const {title, summary, chapter, subject, id, tags, rating, warning } = await req.json();
+    const {title, summary, chapter, chaptContent, subject, id, tags, rating, warning } = await req.json();
     const subjectnames = subject//.split(',');
     const editedWork = await prisma.work.update({
             where: {id :parseInt(id)},
@@ -86,10 +86,17 @@ export const PUT = async(req, res)=>{
                             create: {name: t}
                         }
                     })
+                },
+                chapters:{
+                    update:{
+                        where:{id: chapter}, // first chapter only
+                        data:{content}
+                    }
                 }
             },
             include:{
-                subject:true
+                subject:true,
+                chapters: true
             }
     })
     return NextResponse.json(editedWork);

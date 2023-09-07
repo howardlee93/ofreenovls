@@ -9,10 +9,15 @@ const WorkToolBar = (props)=>{
 
     return(
         <ul className={styles.toolbar}>
-            <button className={styles.toolbutton}>Entire work</button>
+            <button className={styles.toolbutton}><Link href={`/works/${props.params}/chapters`}>Entire work</Link></button>
         {multiC ?
         <>
-            <button className={styles.toolbutton}>Next chapter</button> 
+            <button className={styles.toolbutton}>Previous chapter</button> 
+            <button className={styles.toolbutton}>
+            <Link href={`/works/${props.params}/chapters/${props.nextChapt.id}`}>
+                Next chapter
+            </Link>
+            </button> 
         </>
          :""}
 

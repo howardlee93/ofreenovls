@@ -29,22 +29,6 @@ const EntireWorkPage = async({params}) =>{
   
     return(
         <>
-        <WorkToolBar multiC={null} params={work}/>
-        <h1>{workText.title}</h1>
-        <h2>{workText.summary}</h2>
-        <p>by <Link href={`/users/${workText.authorId}`}>{workText.author.name}</Link></p>
-        <p>Subjects:
-        { workText.subject.map(sub=>
-            <Link key={sub.id} href={`/subjects/${sub.id}`}>{sub.name}</Link>
-        )} 
-        </p>
-        <p> Rated: {ratings[workText.rating]}</p>
-        <p>Warning: {warnings[workText.warning]}</p>
-        <p>Tags:
-        { workText.tag.map(tag=>
-            <Link key={tag.id} href={`/tags/${tag.id}`}>{tag.name}</Link>
-        )}
-        </p>
         {workText.chapters.map(chapt =>
             <div key={chapt.id} dangerouslySetInnerHTML={{__html: chapt.content}}/>
         )}

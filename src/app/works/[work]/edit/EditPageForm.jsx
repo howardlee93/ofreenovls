@@ -19,7 +19,9 @@ const EditPageForm = (props)=>{
             tags: e.target.tags.value.indexOf(',') !== -1 ? e.target.tags.value.split(',') :
                 [e.target.tags.value],
             rating: e.target.rating.value,
-            warning: e.target.warning.value,        
+            warning: e.target.warning.value,
+            chapter: workInfo.chapters[0].id,
+            chaptContent: content  
         };
 
         const options ={
