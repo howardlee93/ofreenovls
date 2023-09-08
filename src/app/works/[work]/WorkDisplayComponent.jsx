@@ -4,11 +4,10 @@ import Link from "next/link";
 import {useState} from 'react';
 
 const WorkDisplayComponent = (props)=>{
-    const {workText ,work} = props;
+    const {workText, work} = props;
     const [currChapter, setCurrChapter] = useState(0);
     const [showEntire, setShowEntire] = useState(false);
-    const prevChapt =  workText.chapters[0];
-    const nextChapt = workText.chapters[1];
+  
     const multiC = workText.chapters.length > 1;
 
     const warnings = {
@@ -23,11 +22,13 @@ const WorkDisplayComponent = (props)=>{
         'm':'Mature', 
         'e':'Explicit'
     };
+    const {chapters} = workText;
     return(
         <>
-        <WorkToolBar multiC={multiC} params={work} nextChapt={nextChapt} 
+        <WorkToolBar multiC={multiC} params={work} 
             showEntire={showEntire} setShowEntire={setShowEntire}
             currChapter={currChapter} setCurrChapter={setCurrChapter}
+            chapters={chapters}
         />
         <h1>{workText.title}</h1>
         <h2>{workText.summary}</h2>
@@ -56,7 +57,7 @@ const WorkDisplayComponent = (props)=>{
         </>
         : 
         <>
-        <h1>Chapter {currChapter+1}</h1>
+        <h1>Chapter {parseInt(currChapter+1)}</h1>
             <div  dangerouslySetInnerHTML={{__html: workText.chapters[currChapter].content}}/>
         </>
         }
