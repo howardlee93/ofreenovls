@@ -90,7 +90,7 @@ export const PUT = async(req, res)=>{
                 chapters:{
                     update:{
                         where:{id: chapter}, // first chapter only
-                        data:{content}
+                        data:{content: chaptContent}
                     }
                 }
             },

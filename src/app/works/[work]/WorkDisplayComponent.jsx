@@ -58,7 +58,7 @@ const WorkDisplayComponent = (props)=>{
         : 
         <>
         <h1>Chapter {parseInt(currChapter+1)}</h1>
-            <div  dangerouslySetInnerHTML={{__html: workText.chapters[currChapter].content}}/>
+            <div dangerouslySetInnerHTML={{__html: workText.chapters[currChapter].content}}/>
         </>
         }
         </>

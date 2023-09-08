@@ -9,7 +9,9 @@ const WorkPage = async ({params})=>{
     const workText = await prisma.work.findUnique({
         where:{id:parseInt(work)},
         include:{
-            chapters:true,
+            chapters:{
+                orderBy: {createdAt:'asc'} // want chapter to show in order of creation
+            },
             author:true,
             subject:true,
             tag: true

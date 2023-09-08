@@ -22,7 +22,7 @@ const EditPageForm = (props)=>{
             rating: e.target.rating.value,
             warning: e.target.warning.value,
             chapter: workInfo.chapters[0].id,
-            chaptContent: content  
+            chaptContent: content.join('')  
         };
 
         const options ={
