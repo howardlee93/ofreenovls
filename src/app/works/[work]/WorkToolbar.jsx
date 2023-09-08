@@ -2,17 +2,40 @@
 import Link from "next/link";
 import { useAuth } from "@/app/_util/authContext";
 import styles from './WorkToolbar.module.css';
+import {useState} from 'react';
 
 const WorkToolBar = (props)=>{
     const {user} = useAuth();
     const {multiC} = props;
+    const [selectedChptInd, setSelectedChptInd] = useState(props.currChapter)
+
+    const handleChaptInd = (e)=>{
+        e.preventDefault();
+        console.log(typeof(e.target.value))
+        setSelectedChptInd(e.target.value)
+        props.setCurrChapter(parseInt(e.target.value))
+    }
 
     return(
         <ul className={styles.toolbar}>
-            <button className={styles.toolbutton}>Entire work</button>
+            <button className={styles.toolbutton} onClick={()=>props.setShowEntire(!props.showEntire)}>
+            Entire work
+            </button>
         {multiC ?
         <>
-            <button className={styles.toolbutton}>Next chapter</button> 
+            <button className={styles.toolbutton} onClick={() => props.setCurrChapter(prev => --prev)}>Previous chapter</button> 
+            <button className={styles.toolbutton} onClick={() => props.setCurrChapter(prev => ++prev)}>
+                Next chapter
+            </button> 
+
+            <select name='chapt-index' value={selectedChptInd} onChange={handleChaptInd}>
+                <option>--chapter index--</option>
+                {props.chapters.map((chapter,i )=>
+                    <option value={i} key={chapter.id}>{chapter.title? `${i+1} ${chapter.title}` : `${i+1}`}
+                    </option>
+                )}
+            </select>
+
         </>
          :""}
 

@@ -1,10 +1,19 @@
 import { PrismaClient } from "@prisma/client";
 
+
+// async function generateStaticParams() {
+//     const posts = await fetch('https://.../posts').then((res) => res.json())
+   
+//     return posts.map((post) => ({
+//       slug: post.slug,
+//     }))
+//   }
 const WorkChapterPage = async({params})=>{
-    const {work, id} = params;
+    const {id} = params;
     const prisma = new PrismaClient();
+    console.log(id)
     const chapter = await prisma.chapter.findUnique({
-        where:{workId: parseInt(work)}
+        where:{id}
     })
     return(
         <>

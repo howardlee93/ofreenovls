@@ -51,6 +51,8 @@ model Work {
   tag Tag[]
   rating    String
   warning   String
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
 }
 
 //chapter
@@ -62,6 +64,8 @@ model Chapter {
   published Boolean @default(false)
   work      Work?   @relation(fields: [workId], references: [id])
   workId    Int
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
 }
 
 //subject

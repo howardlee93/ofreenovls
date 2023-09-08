@@ -29,16 +29,19 @@ const Form = (props)=>{
                     <input type="radio" name="warning" value="sex" defaultChecked={workInfo?.warning ==='sex'}/> 
                 </div>
 
-                
+                <label htmlFor='subject'>Subjects:</label>
                 <input type='text' name="subject" placeholder="subject" defaultValue={subNames}/>
 
+                <label htmlFor='tags'>Tags:</label>
                 <input type='text' name="tags" placeholder="tags" defaultValue={tagNames} />
 
                 <label htmlFor='chapters'>Multi-chaptered?:</label>
                 <input type='checkbox' name="chapters"/>
 
+                <label htmlFor='title'>Title</label>
                 <input type='text' name="title" placeholder="title" defaultValue={workInfo?.title ||''}/>
                 
+                <label htmlFor='summary'>Summary</label>
                 <textarea name="summary" placeholder='summary' defaultValue={workInfo?.summary ||''}/>
 
                 <label htmlFor="content"> Content</label>
