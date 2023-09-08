@@ -50,14 +50,14 @@ const WorkDisplayComponent = (props)=>{
         <>
         {workText.chapters.map((chapt, i) =>
         <div key={chapt.id}>
-            <h1>Chapter {i+1}</h1>
+            <h1>Chapter {i+1}:{chapt.title} </h1>
             <div dangerouslySetInnerHTML={{__html: chapt.content}}/>
         </div>
         )}
         </>
         : 
         <>
-        <h1>Chapter {parseInt(currChapter+1)}</h1>
+        <h1>Chapter {parseInt(currChapter+1)}: {chapt.title}</h1>
             <div dangerouslySetInnerHTML={{__html: workText.chapters[currChapter].content}}/>
         </>
         }
