@@ -6,17 +6,20 @@ import styles from './WorkToolbar.module.css';
 const WorkToolBar = (props)=>{
     const {user} = useAuth();
     const {multiC} = props;
+    const handleNextChapt = ()=>{
+        props.setCurrChapter()
+    }
 
     return(
         <ul className={styles.toolbar}>
-            <button className={styles.toolbutton}><Link href={`/works/${props.params}/chapters`}>Entire work</Link></button>
+            <button className={styles.toolbutton} onClick={()=>props.setShowEntire(!props.showEntire)}>
+            Entire work
+            </button>
         {multiC ?
         <>
-            <button className={styles.toolbutton}>Previous chapter</button> 
-            <button className={styles.toolbutton}>
-            <Link href={`/works/${props.params}/chapters/${props.nextChapt.id}`}>
+            <button className={styles.toolbutton} onClick={() => props.setCurrChapter(prev => --prev)}>Previous chapter</button> 
+            <button className={styles.toolbutton} onClick={() => props.setCurrChapter(prev => ++prev)}>
                 Next chapter
-            </Link>
             </button> 
         </>
          :""}

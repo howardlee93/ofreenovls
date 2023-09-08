@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import WorkToolBar from "./WorkToolbar";
 import Link from "next/link";
+import WorkDisplayComponent from './WorkDisplayComponent';
 
 const WorkPage = async ({params})=>{
     const {work} = params;
@@ -18,7 +19,7 @@ const WorkPage = async ({params})=>{
 
     return(
         <>
-        <div dangerouslySetInnerHTML={{__html:workText.chapters[0].content}}/>
+        <WorkDisplayComponent workText={workText} work={work}/>
         </>
     )
 }

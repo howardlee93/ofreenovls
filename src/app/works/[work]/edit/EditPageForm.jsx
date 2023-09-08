@@ -2,6 +2,7 @@
 import {useState, useEffect} from 'react';
 import Form from '../../form';
 import { useRouter } from 'next/navigation'
+import Link from 'next/link';
 
 const EditPageForm = (props)=>{
     const {workInfo} = props;
@@ -48,9 +49,9 @@ const EditPageForm = (props)=>{
         {workInfo ?
         <>
         <h1>Edit {workInfo.title}</h1>
-        <button>Add chapter</button>
+        <button><Link href={`chapters/add`}>Add chapter</Link></button>
         {workInfo.chapters.map((chapter, ind)=>
-            <button key={chapter.id}>Edit chapter {ind+1}</button>
+            <button key={chapter.id}><Link href={`chapters/${chapter.id}/edit`}>Edit chapter {ind+1}</Link></button>
         )}
         <Form content={workInfo.chapters[0].content}
             setContent={setContent}
