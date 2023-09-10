@@ -2,6 +2,7 @@
 import WorkToolBar from "./WorkToolbar";
 import Link from "next/link";
 import {useState} from 'react';
+import BookmarkAdd from '@/app/bookmark/BookmarkAdd';
 
 const WorkDisplayComponent = (props)=>{
     const {workText, work} = props;
@@ -61,6 +62,7 @@ const WorkDisplayComponent = (props)=>{
             <div dangerouslySetInnerHTML={{__html: workText.chapters[currChapter].content}}/>
         </>
         }
+        <BookmarkAdd/>
         </>
     )
 }

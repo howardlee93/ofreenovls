@@ -23,6 +23,10 @@ export const POST = async(req, res)=>{
                     id: parseInt(workId)
                 }
             }
+        },
+        include:{
+            user:true,
+            work: true
         }
     })
     return NextResponse.json(newBookmark);
