@@ -30,6 +30,8 @@ const WorkDisplayComponent = (props)=>{
             showEntire={showEntire} setShowEntire={setShowEntire}
             currChapter={currChapter} setCurrChapter={setCurrChapter}
             chapters={chapters}
+            workId={workText.id}
+            authorId={workText.authorId}
         />
         <h1>{workText.title}</h1>
         <h2>{workText.summary}</h2>
@@ -46,7 +48,7 @@ const WorkDisplayComponent = (props)=>{
             <Link key={tag.id} href={`/tags/${tag.id}`}>{tag.name}</Link>
         )}
         </p>
-        
+        <p> Num of booksmarks: {workText.bookmarks.length}</p>
         {showEntire ?
         <>
         {workText.chapters.map((chapt, i) =>
@@ -62,7 +64,6 @@ const WorkDisplayComponent = (props)=>{
             <div dangerouslySetInnerHTML={{__html: workText.chapters[currChapter].content}}/>
         </>
         }
-        <BookmarkAdd/>
         </>
     )
 }

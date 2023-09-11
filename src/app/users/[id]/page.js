@@ -9,11 +9,17 @@ const UserDashboard = async ({params})=>{
             id: parseInt(id)
         },
         include:{
-            works:true
+            works:true,
+            bookmarks:{
+                include:{
+                    work:true
+                }
+            }
         }
 
     });
 
+    console.log(user.bookmarks)
     return(
         <>
             <h1>{user.name}!</h1>
@@ -24,7 +30,11 @@ const UserDashboard = async ({params})=>{
                 )
             })}
             <h2>Bookmarks</h2>
-       
+            {user.bookmarks.slice(0,5).map(b=>{
+                return(
+                    <p key={b.id}><Link href={`/works/${b.workId}`}>{b.work.title}</Link></p>
+                )
+            })}
         </>
     )
 }

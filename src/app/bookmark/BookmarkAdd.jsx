@@ -1,9 +1,9 @@
 'use client';
 import { useAuth } from "../_util/authContext";
-import { useRouter } from "next/router";
+import { useRouter } from 'next/navigation'
 
 const BookmarkAdd = props=>{
-    const user = useAuth
+    const {user} = useAuth();
     const {workId} = props;
     const router = useRouter();
 
@@ -12,6 +12,7 @@ const BookmarkAdd = props=>{
             userId: user.id,
             workId
         }
+        console.log(data)
         const options ={
             method:'POST',
             headers:{
@@ -19,15 +20,13 @@ const BookmarkAdd = props=>{
             },
             body: JSON.stringify(data)
         }
-        // fetch('/bookmark', options)
-        // .then(()=>router.replace(`/users/${user.id}`))
+        fetch('/bookmark', options)
+        .then(()=>router.replace(`/users/${user.id}`))
     }
 
     return (
         <>
-        {user.id ?
-        <button onClick={handleClick}> Bookmark</button>
-        :""}
+        <button onClick={handleClick} className={props.className}> Bookmark</button>
         </>
     )
 }

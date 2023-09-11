@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useAuth } from "@/app/_util/authContext";
 import styles from './WorkToolbar.module.css';
 import {useState} from 'react';
+import BookmarkAdd from '@/app/bookmark/BookmarkAdd';
 
 const WorkToolBar = (props)=>{
     const {user} = useAuth();
@@ -40,11 +41,12 @@ const WorkToolBar = (props)=>{
          :""}
 
         {user.id  ? // only users can bookmark and edit 
-        <>
-            <button className={styles.toolbutton}>Bookmark</button>
-            <button className={styles.toolbutton}><Link href={`/works/${props.params}/edit`}>Edit </Link></button>
-        </>
+            <BookmarkAdd className={styles.toolbutton} workId={props.workId}/>
         :''
+        }
+        {user.id === props.authorId? 
+        <button className={styles.toolbutton}><Link href={`/works/${props.params}/edit`}>Edit </Link></button>
+        :""
         }
 
         </ul>
