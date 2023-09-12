@@ -15,7 +15,10 @@ const WorkPage = async ({params})=>{
             author:true,
             subject:true,
             tag: true,
-            bookmarks:true
+            bookmarks:true,
+            comments:{
+                include:{user:true}
+            }
         }
     })
 
