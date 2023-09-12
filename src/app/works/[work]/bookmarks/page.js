@@ -7,25 +7,24 @@ const WorkBookmarkPage = async({params}) =>{
     const workText = await prisma.work.findUnique({
         where:{id:parseInt(work)},
         include:{
-            // chapters:{
-            //     orderBy: {createdAt:'asc'} // want chapter to show in order of creation
-            // },
-            // author:true,
-            // subject:true,
-            // tag: true,
             bookmarks:{
                 include:{
-                    users:true
+                    user:true
                 }
             }
         }
     })
-
+    console.log(workText.bookmarks)
     return(
         <>
-        {workText.bookmarks.map(bookmark=>{
-            <p key={bookmark.key}>bookmark</p>
-        })}
+        <h1> {workText.title} bookmarked by:</h1>
+        {workText.bookmarks.map(bookmark=>
+            <p key={bookmark.id}>
+            <Link href={`/users/${bookmark.userId}`}>
+            {bookmark.user.name}
+            </Link>
+            </p>
+        )}
         </>
     )
 }

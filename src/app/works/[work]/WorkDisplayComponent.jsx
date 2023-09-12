@@ -37,7 +37,7 @@ const WorkDisplayComponent = (props)=>{
             <Link key={tag.id} href={`/tags/${tag.id}`}>{tag.name}</Link>
         )}
         </p>
-        <p> Num of booksmarks: {workText.bookmarks.length}</p>
+        <p> Num of booksmarks: <Link href={`${workText.id}/bookmarks`}>{workText.bookmarks.length}</Link></p>
         {showEntire ?
         <>
         {workText.chapters.map((chapt, i) =>
