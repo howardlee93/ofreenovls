@@ -1,10 +1,39 @@
-'use client'
+import { PrismaClient } from "@prisma/client";
+import Link from "next/link";
+import BookmarkDisplay from "@/app/bookmark/BookmarkDisplay";
 
-const UserDashboard = ()=>{
 
+const UserBookmarksPage = async({params})=>{
+    const prisma = new PrismaClient();
+    const {id} = params; 
+    const user = await prisma.user.findUnique({
+        where:{
+            id: parseInt(id)
+        },
+        include:{
+            bookmarks:{
+                include:{
+                    work:{
+                        include:{
+                            author:true
+                        }
+                    }
+                }
+            }
+        }
+
+    });
     return(
-        <h1> user dashboard</h1>
+        <>
+        <h1> Bookmarks</h1>
+
+        {user.bookmarks.map(b=>{
+            return(
+                <BookmarkDisplay key={b.id} bookmark={b}/>
+            )
+        })}
+        </>
     )
 }
 
-export default UserDashboard;
+export default UserBookmarksPage;

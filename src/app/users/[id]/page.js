@@ -1,5 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import Link from "next/link";
+import BookmarkDisplay from "@/app/bookmark/BookmarkDisplay";
+
 
 const UserDashboard = async ({params})=>{
     const prisma = new PrismaClient();
@@ -12,13 +14,16 @@ const UserDashboard = async ({params})=>{
             works:true,
             bookmarks:{
                 include:{
-                    work:true
+                    work:{
+                        include:{
+                            author:true
+                        }
+                    },
                 }
             }
         }
 
     });
-
     console.log(user.bookmarks)
     return(
         <>
@@ -32,7 +37,7 @@ const UserDashboard = async ({params})=>{
             <h2>Bookmarks</h2>
             {user.bookmarks.slice(0,5).map(b=>{
                 return(
-                    <p key={b.id}><Link href={`/works/${b.workId}`}>{b.work.title}</Link></p>
+                    <BookmarkDisplay key={b.id} bookmark={b}/>
                 )
             })}
         </>
