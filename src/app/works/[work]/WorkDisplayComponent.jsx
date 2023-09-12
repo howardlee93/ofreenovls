@@ -2,7 +2,8 @@
 import WorkToolBar from "./WorkToolbar";
 import Link from "next/link";
 import {useState} from 'react';
-import BookmarkAdd from '@/app/bookmark/BookmarkAdd';
+import {ratings, warnings} from '@/app/_shared/constants';
+
 
 const WorkDisplayComponent = (props)=>{
     const {workText, work} = props;
@@ -10,19 +11,7 @@ const WorkDisplayComponent = (props)=>{
     const [showEntire, setShowEntire] = useState(false);
   
     const multiC = workText.chapters.length > 1;
-
-    const warnings = {
-        'none':'Decline to warn',
-        'violence': 'Violence',
-         'sex':'Sexual Content'
-    };
-
-    const ratings = {
-        'pg':'PG',
-        'pg13':'PG-13', 
-        'm':'Mature', 
-        'e':'Explicit'
-    };
+    
     const {chapters} = workText;
     return(
         <>

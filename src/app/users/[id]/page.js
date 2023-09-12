@@ -24,7 +24,6 @@ const UserDashboard = async ({params})=>{
         }
 
     });
-    console.log(user.bookmarks)
     return(
         <>
             <h1>{user.name}!</h1>

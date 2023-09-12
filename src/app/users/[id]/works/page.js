@@ -3,6 +3,7 @@ import Link from "next/link";
 
 const UserWorks = async({params})=>{
     const {id} = params;
+    const prisma = new PrismaClient();
     const userWorks = await prisma.user.findUnique({
         where:{id: parseInt(id)},
         include:{

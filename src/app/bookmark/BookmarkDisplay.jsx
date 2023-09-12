@@ -1,10 +1,12 @@
 'use client';
 import Link from "next/link";
-// import {useRouter} from 'next/navigation';
+import {useRouter} from 'next/navigation';
+import {warnings, ratings} from '@/app/_shared/constants';
 
 const BookmarkDisplay = props=>{
     const {bookmark} = props;
     const {work} = bookmark;
+    const router = useRouter();
     const handleDelete= (e)=>{
         e.preventDefault();
         console.log(bookmark.id)
@@ -17,6 +19,7 @@ const BookmarkDisplay = props=>{
           
         }
         fetch('/bookmark/', options)
+        .then(()=> router.refresh())
     }
 
     return(
@@ -25,11 +28,11 @@ const BookmarkDisplay = props=>{
             <Link href={`/users/${work.authorId}`}>{work.author.name}</Link>
          </h2>
         
-        <p>{work.rating}</p>
-        <p>{work.warning}</p>
-        <p>{work.subjects}</p>
-        <p>{work.tags}</p>
-        <p>{work.summary}</p>
+        <p>Rating: {ratings[work.rating]}</p>
+        <p>Warning: {warnings[work.warning]}</p>
+        <p>Subjects: {work.subjects}</p>
+        <p>Tags:{work.tags}</p>
+        <p>Summary: {work.summary}</p>
         <button onClick={handleDelete}>Delete</button>
         </>
     )
