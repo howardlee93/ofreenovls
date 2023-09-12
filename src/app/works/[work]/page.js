@@ -14,7 +14,8 @@ const WorkPage = async ({params})=>{
             },
             author:true,
             subject:true,
-            tag: true
+            tag: true,
+            bookmarks:true
         }
     })
 

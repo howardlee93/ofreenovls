@@ -17,8 +17,8 @@ const UserLayout = ({children, params})=>{
                 <ul>
                 <li><Link href={`/users/${id}`} replace> Dashboard</Link></li>
                 <li><Link href={`/users/${id}/profile`} replace>Profile</Link></li>
-                <li>Works</li>
-                <li>Bookmarks</li>
+                <li><Link href={`/users/${id}/works`} replace>Works</Link></li>
+                <li><Link href={`/users/${id}/bookmarks`} replace>Bookmarks</Link></li>
                 {protectedView ? 
                 <li>Statistics</li>
                 :

@@ -2,6 +2,8 @@
 import WorkToolBar from "./WorkToolbar";
 import Link from "next/link";
 import {useState} from 'react';
+import {ratings, warnings} from '@/app/_shared/constants';
+
 
 const WorkDisplayComponent = (props)=>{
     const {workText, work} = props;
@@ -9,19 +11,7 @@ const WorkDisplayComponent = (props)=>{
     const [showEntire, setShowEntire] = useState(false);
   
     const multiC = workText.chapters.length > 1;
-
-    const warnings = {
-        'none':'Decline to warn',
-        'violence': 'Violence',
-         'sex':'Sexual Content'
-    };
-
-    const ratings = {
-        'pg':'PG',
-        'pg13':'PG-13', 
-        'm':'Mature', 
-        'e':'Explicit'
-    };
+    
     const {chapters} = workText;
     return(
         <>
@@ -29,6 +19,8 @@ const WorkDisplayComponent = (props)=>{
             showEntire={showEntire} setShowEntire={setShowEntire}
             currChapter={currChapter} setCurrChapter={setCurrChapter}
             chapters={chapters}
+            workId={workText.id}
+            authorId={workText.authorId}
         />
         <h1>{workText.title}</h1>
         <h2>{workText.summary}</h2>
@@ -45,7 +37,7 @@ const WorkDisplayComponent = (props)=>{
             <Link key={tag.id} href={`/tags/${tag.id}`}>{tag.name}</Link>
         )}
         </p>
-        
+        <p> Num of booksmarks: <Link href={`${workText.id}/bookmarks`}>{workText.bookmarks.length}</Link></p>
         {showEntire ?
         <>
         {workText.chapters.map((chapt, i) =>
