@@ -3,6 +3,8 @@ import WorkToolBar from "./WorkToolbar";
 import Link from "next/link";
 import {useState} from 'react';
 import {ratings, warnings} from '@/app/_shared/constants';
+import AddComment from "@/app/comment/AddComment";
+import DisplayComment from "@/app/comment/DisplayComment";
 
 
 const WorkDisplayComponent = (props)=>{
@@ -53,6 +55,13 @@ const WorkDisplayComponent = (props)=>{
             <div dangerouslySetInnerHTML={{__html: workText.chapters[currChapter].content}}/>
         </>
         }
+        <AddComment workId={workText.id}/>
+
+        {workText.comments.map(comment=>
+        <DisplayComment key={comment.id} comment={comment}
+            authorId={workText.authorId}
+        />
+        )}
         </>
     )
 }
