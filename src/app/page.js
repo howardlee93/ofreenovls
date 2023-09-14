@@ -1,28 +1,26 @@
-'use client';
-
-import Link from 'next/link';
-import { useAuth } from '@/app/_util/authContext';
+import HomeSubjects from './HomeSubjects';
+import HomeWorks from './HomeWorks';
+import HomeDisplay from './HomeDisplay';
+import styles from './home.module.css';
 
 //https://dev.to/seven/how-to-implement-protected-routes-in-nextjs-1m50
 export default function Home() {
-
-  const {user} = useAuth();
-
+  
   return (
-  <>
-  <div className="h-screen items-center justify-center">
-    <h1>Home</h1>
+    <div className={styles.container}>
+        <h1  className={styles.main}>Home</h1>
+        <div className={styles.works}>
+        <HomeWorks />
+        </div>
+        
+        <div className={styles.subjects}>
+        <HomeSubjects />
+        </div>
+        <div className={styles.userdisplay}>
+        <HomeDisplay />
+        </div>
 
-    {user.name ?
-      <>
-        <h3>Hello {user.name}. You are  signed in. Welcome!</h3>
-        <a href="/post">Post your work here</a>
-      </>
-      :<h3>Please sign in to view</h3>
-    }
-    <p/>
-    <Link href="/users/register">Register new user</Link>
-  </div>
-  </>
-  )
+        <a className={styles.bottom} href="/users/register"><p>Register new user</p></a>
+    </div>
+    )
 }
