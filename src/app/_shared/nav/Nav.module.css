@@ -4,10 +4,11 @@
 .navigation {
     display:flex;
     flex-direction:row;
-    gap: 10px;
+    gap: 1%;
     background-color: #ff6347;
     height: 10vh;
     font-size:x-large;
+    padding-left: 5%;
 }
 
 
