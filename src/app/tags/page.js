@@ -15,7 +15,7 @@ const TagsPage = async()=>{
         <>
             {tags.map(tag =>
                 <div key={tag.id}>
-                    <Link href={`/tags/${tag.id}`}> {tag.name}</Link>
+                    <Link href={`/tags/${tag.id}`}> <h1>{tag.name}</h1></Link>
                     <p>{tag._count.works} works</p>
                 </div>
             )}
