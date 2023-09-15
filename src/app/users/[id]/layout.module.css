@@ -11,3 +11,7 @@
 .content{
     grid-column-start: 2;
 }
+
+.userHeader{
+    border-bottom: solid;
+}
