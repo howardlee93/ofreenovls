@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useAuth } from '@/app/_util/authContext';
 
 const HomeDisplay = ({className})=>{
@@ -10,11 +9,11 @@ const HomeDisplay = ({className})=>{
     <div className={className}>
         {user.name  && user.id?
             <>
-            <h3>Hello {user.name}. You are  signed in. Welcome!</h3>
+            <h2>Hello {user.name}. You are  signed in. Welcome!</h2>
             <p><a href="/works/new">Post your work here</a></p>
             <p><a href={`/users/${user.id}`}>Go to dashboard</a></p>
             </>
-            :<h3>Please sign in to view</h3>
+            :<h2>Please sign in to view</h2>
         }
 
       </div>

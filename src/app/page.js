@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1 >Welcome to Ofreenovls</h1>
+        <h1>Welcome to Ofreenovls</h1>
         <p>Ofreenovls is a website for posting and sharing chaptered texts, built with NextJs.</p>
       </div>
         <HomeWorks className={styles.works} /> 
