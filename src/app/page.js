@@ -8,17 +8,13 @@ export default function Home() {
   
   return (
     <div className={styles.container}>
-        <h1  className={styles.main}>Home</h1>
-        <div className={styles.works}>
-        <HomeWorks />
-        </div>
-        
-        <div className={styles.subjects}>
-        <HomeSubjects />
-        </div>
-        <div className={styles.userdisplay}>
-        <HomeDisplay />
-        </div>
+      <div className={styles.header}>
+        <h1 >Welcome to Ofreenovls</h1>
+        <p>Ofreenovls is a website for posting and sharing chaptered texts, built with NextJs.</p>
+      </div>
+        <HomeWorks className={styles.works} /> 
+        <HomeSubjects className={styles.subjects}/>
+        <HomeDisplay className={styles.userdisplay}/>
 
         <a className={styles.bottom} href="/users/register"><p>Register new user</p></a>
     </div>

@@ -19,5 +19,9 @@
 h1{
   color:#ff6347;
   font-family: serif;
-  font-size: larger;
+  font-size: xx-large;
+}
+
+p{
+  font-family: sans-serif;
 }

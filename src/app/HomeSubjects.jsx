@@ -17,11 +17,7 @@ const HomeSubjects = async({className})=>{
         <div className={className}>
         <h1> Top subjects</h1>
         {subjects.map((subject)=>
-            <div key={subject.id}>
-                <Link href={`/subjects/${subject.id}`} replace> <h1>{subject.name}</h1></Link>
-                <p>{subject._count.works} works</p>
-
-            </div>
+            <Link key={subject.id} href={`/subjects/${subject.id}`} replace> <h2>{subject.name}</h2></Link>
         )}
         </div>
     )

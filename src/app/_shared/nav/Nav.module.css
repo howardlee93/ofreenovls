@@ -6,6 +6,8 @@
     flex-direction:row;
     gap: 10px;
     background-color: #ff6347;
+    height: 10vh;
+    font-size:x-large;
 }
 
 
