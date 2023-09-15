@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import Link from 'next/link';
+import styles from './home.module.css'
 
 const HomeSubjects = async({className})=>{
     const prisma = new PrismaClient();
@@ -15,9 +16,9 @@ const HomeSubjects = async({className})=>{
     // console.log(subjects)
     return(
         <div className={className}>
-        <h1> Top subjects</h1>
+        <h1 className={styles.homeTitle}> Top subjects</h1>
         {subjects.map((subject)=>
-            <Link key={subject.id} href={`/subjects/${subject.id}`} replace> <h2>{subject.name}</h2></Link>
+            <Link key={subject.id} href={`/subjects/${subject.id}`} replace>{subject.name}</Link>
         )}
         </div>
     )

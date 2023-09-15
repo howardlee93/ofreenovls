@@ -16,17 +16,18 @@
   }
 };
 
-h1{
-  color:#ff6347;
-  font-family: serif;
-  font-size: xx-large;
-};
 
-h2{
-  font-family: serif;
-  font-size: larger;
-};
-
-p{
-  font-family: sans-serif;
+@layer base {
+  h1 {
+    @apply text-3xl;
+    font-family: serif;
+  }
+  h2 {
+    @apply text-xl;
+    font-family: serif;
+  }
+  a{
+    text-decoration: underline;
+  }
 }
+

@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import Link from 'next/link';
+import styles from './home.module.css'
 
 const HomeWorks = async({className})=>{
     const prisma = new PrismaClient();
@@ -12,11 +13,11 @@ const HomeWorks = async({className})=>{
 
     return(
         <div className={className}>
-        <h1>Recent works</h1>
+        <h1 className={styles.homeTitle}>Recent works</h1>
         {fiveworks.map(work =>
             <p key={work.id}>
             <Link href={`/works/${work.id}`} replace>{work.title} </Link>
-            by {' '} 
+            by{' '} 
             <Link href={`/users/${work.authorId}`} replace>{work.author.name}</Link>
          </p>
             )

@@ -2,8 +2,8 @@
 
 import {useState} from 'react';
 import styles from './login.module.css';
-
 import { useAuth } from "@/app/_util/authContext";
+import { useRef, useEffect } from 'react';
 
 const Login = ()=> {
     const {login} = useAuth();
@@ -11,6 +11,13 @@ const Login = ()=> {
     const [showLogin, setShowLogin] = useState(false);
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
+
+    const inputReference = useRef(null);
+
+    const handleClick = ()=>{
+      setShowLogin(!showLogin)
+      // inputReference.current.focus();
+    }
 
     const handleSubmit =async (event)=>{
         event.preventDefault();
@@ -41,16 +48,17 @@ const Login = ()=> {
     
     return(
         <>
-        <p onClick={()=>setShowLogin(!showLogin)}> Login</p>
-        {showLogin ? <form className={styles.menu}
-        onSubmit={handleSubmit}
-        >
+        <p onClick={handleClick}> Login</p>
+        {showLogin ?
+         <form className={styles.menu} ref={inputReference}
+          onSubmit={handleSubmit}
+          >
             <input type="text" placeholder='username' defaultValue={userName} onChange={e=>setUserName(e.target.value)}/>
             <input type="email" placeholder='email' defaultValue={email} onChange={e=>setEmail(e.target.value)}/>
             <button type="submit">Sign in</button>
         </form>
         :
-        <div/>
+        ''
         }
         </>
     )

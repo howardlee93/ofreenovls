@@ -4,7 +4,8 @@ import Login from '../login/Login';
 import LogOut from '../login/LogOut';
 import styles from './Nav.module.css';
 import { useAuth } from '@/app/_util/authContext';
-import Link from 'next/link'
+import Link from 'next/link';
+
 
 const Navigation = () =>{
   const {user} = useAuth();
@@ -12,7 +13,7 @@ const Navigation = () =>{
   return(
     <>
     <ul className={styles.navigation} role="navigation">
-      <li><a href='/'>Home</a></li>
+      <a className={styles.navLink} href='/'><li>Home</li></a>
       <li>About</li>
       <li>Works</li>      
       <li>Search</li>
