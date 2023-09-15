@@ -1,5 +1,10 @@
+
+
 .menu{
     display:flex;
     flex-direction: column;
     gap: 10px;
+    opacity: 1;
+    background-color: #ff6347;
+    padding: 1%;
 }

@@ -14,8 +14,16 @@ const Login = ()=> {
 
     const inputReference = useRef(null);
 
+    useEffect(()=>{
+      if (showLogin){
+        console.log(inputReference.current);
+        inputReference.current.focus();
+      }
+    },[showLogin]);
+
     const handleClick = ()=>{
       setShowLogin(!showLogin)
+      // console.log(inputReference.current);
       // inputReference.current.focus();
     }
 
@@ -50,8 +58,8 @@ const Login = ()=> {
         <>
         <p onClick={handleClick}> Login</p>
         {showLogin ?
-         <form className={styles.menu} ref={inputReference}
-          onSubmit={handleSubmit}
+         <form className={styles.menu}
+          onSubmit={handleSubmit} ref={inputReference}
           >
             <input type="text" placeholder='username' defaultValue={userName} onChange={e=>setUserName(e.target.value)}/>
             <input type="email" placeholder='email' defaultValue={email} onChange={e=>setEmail(e.target.value)}/>
