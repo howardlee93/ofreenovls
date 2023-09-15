@@ -27,6 +27,8 @@
   a{
     text-decoration: underline;
   }
-
+  main{
+    margin-left:10%;
+  }
 }
 
