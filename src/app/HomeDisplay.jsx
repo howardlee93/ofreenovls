@@ -2,7 +2,7 @@
 
 import { useAuth } from '@/app/_util/authContext';
 import Login from './_shared/login/Login';
-import styles from './home.module.css'
+import styles from './home.module.css';
 
 const HomeDisplay = ({className})=>{
     const {user} = useAuth();
