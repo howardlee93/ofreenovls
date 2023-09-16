@@ -5,7 +5,7 @@ import LogOut from '../login/LogOut';
 import styles from './Nav.module.css';
 import { useAuth } from '@/app/_util/authContext';
 import Link from 'next/link';
-
+import Browse from '../browse/Browse';
 
 const Navigation = () =>{
   const {user} = useAuth();
@@ -14,8 +14,7 @@ const Navigation = () =>{
     <>
     <ul className={styles.navigation} role="navigation">
       <a className={styles.navLink} href='/'><li>Home</li></a>
-      <li> <Link href={`/subjects`} replace className={styles.navLink}>Subject</Link></li>
-      <li><Link href={`/tags`} replace className={styles.navLink}>Tags</Link></li>      
+      <li> <Browse/></li>
       <li>
         {user.name ? 
         <Link href={`/users/${user.id}`} replace className={styles.navLink}>Hello, {user.name}</Link>

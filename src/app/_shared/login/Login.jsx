@@ -1,9 +1,8 @@
 'use client';
 
-import {useState} from 'react';
+import {useState, useRef, useEffect} from 'react';
 import styles from './login.module.css';
 import { useAuth } from "@/app/_util/authContext";
-import { useRef, useEffect } from 'react';
 
 const Login = ()=> {
     const {login} = useAuth();
