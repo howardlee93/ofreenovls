@@ -7,10 +7,10 @@ const ChapterForm = props =>{
 
     return(
         <form onSubmit={handleSubmit} className={styles.mainForm}>
-                <label htmlFor='title'>Title</label>
+                <label htmlFor='title'>Chapter Title</label>
                 <input type='text' name="title" placeholder="title" defaultValue={workInfo?.title ||''}/>
                 
-                <label htmlFor='summary'>Summary</label>
+                <label htmlFor='summary'>Chapter Summary</label>
                 <textarea name="summary" placeholder='summary' defaultValue={workInfo?.summary ||''}/>
 
 

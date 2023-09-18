@@ -12,11 +12,14 @@ const UserWorks = async({params})=>{
     })
 
     const {works} = userWorks;
+    console.log(works)
     return(
         <>
         <h1>Works</h1>
         {works.map(work=>{
+            return(
             <p key={work.id}><Link href={`/works/${work.id}`} replace>{work.title}</Link></p>
+            )
         })}
         </>
     )

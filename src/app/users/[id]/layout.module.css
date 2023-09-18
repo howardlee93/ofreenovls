@@ -10,8 +10,16 @@
 
 .content{
     grid-column-start: 2;
+    align-items: center;
 }
 
 .userHeader{
     border-bottom: solid;
+}
+
+article.display{
+    border:solid;
+    margin:5%;
+    padding:0 5% 10% 5%;
+
 }

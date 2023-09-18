@@ -28,7 +28,7 @@ const AddComment = (props)=>{
 
 
     return(
-        <div>
+        <div style={{border:'dashed',  padding: 20}}>
         {user.id ? 
             <div className='loggedIn'>
                 <p>Comment as {user.name}</p>

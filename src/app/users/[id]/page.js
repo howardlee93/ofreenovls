@@ -27,18 +27,23 @@ const UserDashboard = async ({params})=>{
     return(
         <>
             <h1>{user.name}!</h1>
+            <article className={styles.display}>
             <h2 className={styles.userHeader}>Works</h2>
             {user.works.slice(0,5).map(work=>{
                 return(
                     <p key={work.id}><Link href={`/works/${work.id}`}>{work.title}</Link></p>
                 )
             })}
+            </article>
+
+            <article className={styles.display}>
             <h2 className={styles.userHeader}>Bookmarks</h2>
             {user.bookmarks.slice(0,5).map(b=>{
                 return(
                     <BookmarkDisplay key={b.id} bookmark={b}/>
                 )
             })}
+            </article>
         </>
     )
 }

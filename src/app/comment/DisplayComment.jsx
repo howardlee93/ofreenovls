@@ -43,6 +43,7 @@ const DisplayComment = (props)=>{
                 body: JSON.stringify({id:comment.id})
             }
             fetch('/comment', options)
+            // .then(()=> router.)
         }else{
             return;
         }

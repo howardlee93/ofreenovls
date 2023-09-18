@@ -5,11 +5,11 @@ import { useRouter } from 'next/navigation';
 
 const EditProfileForm = props =>{
     const router = useRouter();
-    const [content, setContent] = useState()
+    const [content, setContent] = useState(props.profile.bio)
     
     useEffect(()=>{
         console.log(props.profile)
-        setContent(props.profile.bio)
+    //     setContent(props.profile.bio)
     },[props.profile])
 
     const handleSubmit = async(e)=>{
@@ -45,7 +45,6 @@ const EditProfileForm = props =>{
 
     return(
         <>
-        {content ? 
         <form onSubmit={handleSubmit}>
             <h1>Edit Profile</h1>
 
@@ -56,9 +55,6 @@ const EditProfileForm = props =>{
             </div>
             <button type="submit">update</button>
         </form>
-        :
-        ''
-        }
         </>
     )
 }

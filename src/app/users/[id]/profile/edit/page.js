@@ -10,6 +10,7 @@ const EditProfile = async({params})=>{
             userId: parseInt(id)
         }
     })
+    console.log(profile)
     return(
         <>
         {profile ? 

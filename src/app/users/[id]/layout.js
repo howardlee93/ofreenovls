@@ -20,7 +20,7 @@ const UserLayout = ({children, params})=>{
                 <li><Link href={`/users/${id}/works`} replace>Works</Link></li>
                 <li><Link href={`/users/${id}/bookmarks`} replace>Bookmarks</Link></li>
                 {protectedView ? 
-                <li>Statistics</li>
+                <li>Drafts</li>
                 :
                 ""
                 }
