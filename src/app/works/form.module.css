@@ -7,7 +7,11 @@
 .tagCheckbox{
     /* display: flex; */
 }
+
 #radiobox{
     display:flex;
+    flex-direction: row;
+    row-gap: 5%;
+
     /* flex-direction: column; */
 }

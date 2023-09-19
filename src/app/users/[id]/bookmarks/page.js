@@ -15,7 +15,9 @@ const UserBookmarksPage = async({params})=>{
                 include:{
                     work:{
                         include:{
-                            author:true
+                            author:true,
+                            tag:true,
+                            subject:true
                         }
                     }
                 }

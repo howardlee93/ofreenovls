@@ -2,6 +2,7 @@
 import Link from "next/link";
 import {useRouter} from 'next/navigation';
 import {warnings, ratings} from '@/app/_shared/constants';
+import WorkCard from '@/app/_shared/cards/WorkCard';
 
 const BookmarkDisplay = props=>{
     const {bookmark} = props;
@@ -24,15 +25,7 @@ const BookmarkDisplay = props=>{
 
     return(
         <>
-        <h2><Link href={`/works/${work.id}`} >{work.title} </Link>by + {" "}
-            <Link href={`/users/${work.authorId}`}>{work.author.name}</Link>
-         </h2>
-        
-        <p>Rating: {ratings[work.rating]}</p>
-        <p>Warning: {warnings[work.warning]}</p>
-        <p>Subjects: {work.subjects}</p>
-        <p>Tags:{work.tags}</p>
-        <p>Summary: {work.summary}</p>
+        <WorkCard work={work}/>
         <button onClick={handleDelete}>Delete</button>
         </>
     )

@@ -49,9 +49,9 @@ const EditPageForm = (props)=>{
         {workInfo ?
         <>
         <h1>Edit {workInfo.title}</h1>
-        <button><Link href={`chapters/add`}>Add chapter</Link></button>
+        <button style={{margin:5}}><Link href={`chapters/add`}>Add chapter</Link></button>
         {workInfo.chapters.map((chapter, ind)=>
-            <button key={chapter.id}><Link href={`chapters/${chapter.id}/edit`}>Edit chapter {ind+1}</Link></button>
+            <button key={chapter.id} style={{margin:5}}><Link href={`chapters/${chapter.id}/edit`}>Edit chapter {ind+1}</Link></button>
         )}
         <Form content={workInfo.chapters[0].content}
             setContent={setContent}
