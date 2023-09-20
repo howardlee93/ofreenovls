@@ -14,22 +14,16 @@ const SearchResultPage = async({searchParams })=>{
                 },
                 {title:
                     {contains: searchTerm},
-                }
-            ]
-            // tag: {
-            //     some:{
-            //         name:{
-            //             contains: searchTerm
-            //         }
-            //     }
-            // },
-            // subject:{
-            //     some:{
-            //         name:{
-            //             contains: searchTerm
-            //         }
-            //     }
-            // }
+                },
+                {tag:{
+                    some:{name:{contains:searchTerm}}
+                }},
+                {subject:{
+                    some:{
+                        name:{contains:searchTerm}
+                    }
+                }}
+            ]   
         },
         include:{
             author:true,
