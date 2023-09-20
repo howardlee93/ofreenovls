@@ -1,24 +1,38 @@
 
 import { PrismaClient } from "@prisma/client";
-
+import WorkCard from "../_shared/cards/WorkCard";
 
 const SearchResultPage = async({searchParams })=>{
     const prisma = new PrismaClient();
     const {searchTerm} = searchParams;
 
-    // const result = await prisma.work.findMany({
-    //     where:{
-    //         body:{
-    //             search: searchTerm
-    //         }
-    //     }
-    // })
-    // console.log(result)
+    const result = await prisma.work.findMany({
+        where:{
+            summary:{
+                contains: searchTerm
+            },
+            // tag: {
+            //     has: searchTerm,
+            // },
+            // bookmarks:{
+            //     has: searchTerm
+            // }
+        },
+        include:{
+            author:true,
+            subject:true,
+            tag: true
+        }
+    })
+
+    console.log(result)
 
     return(
         <>
         <h1>Search results</h1>
-        {searchTerm}
+        {result.map(r =>
+            <WorkCard key={r.id} work={r}/>
+        )}
         </>
     )
 
