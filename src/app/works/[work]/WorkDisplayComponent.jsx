@@ -39,6 +39,7 @@ const WorkDisplayComponent = (props)=>{
             <Link key={tag.id} href={`/tags/${tag.id}`}>{tag.name}</Link>
         )}
         </p>
+        <p>Summary: {workText.summary}</p>
         <p> Num of booksmarks: <Link href={`${workText.id}/bookmarks`}>{workText.bookmarks.length}</Link></p>
         {showEntire ?
         <>

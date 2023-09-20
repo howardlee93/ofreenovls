@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import {warnings, ratings} from '@/app/_shared/constants';
-
+import styles from './WorkCard.module.css';
 
 const WorkCard = (props)=>{
     const {work} = props;
     return(
-        <>
+        <div className={styles.card}>
         <h2><Link href={`/works/${work.id}`} >{work.title} </Link>by{" "}
         <Link href={`/users/${work.authorId}`}>{work.author.name}</Link>
         </h2>
@@ -19,7 +19,7 @@ const WorkCard = (props)=>{
         )
         }</p>
         <p>Summary: {work.summary}</p>
-    </>
+    </div>
     )
 }
 
