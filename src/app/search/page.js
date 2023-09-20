@@ -12,9 +12,11 @@ const SearchResultPage = async({searchParams })=>{
                 contains: searchTerm
             },
             // tag: {
+                //name:{}
             //     has: searchTerm,
             // },
             // bookmarks:{
+                //name:{}
             //     has: searchTerm
             // }
         },

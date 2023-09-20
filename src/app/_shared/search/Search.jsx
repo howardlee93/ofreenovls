@@ -1,6 +1,7 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import {useState} from 'react';
+import styles from './Search.module.css';
 
 const SearchComponent =()=>{
     const router = useRouter();
@@ -18,7 +19,7 @@ const SearchComponent =()=>{
 
 
     return(
-        <input type="text" value={searchTerm} onChange={e=> setSearchTerm(e.target.value)}
+        <input id={styles.search} type="text" value={searchTerm} onChange={e=> setSearchTerm(e.target.value)}
             onKeyDown={handleKeypress}
         />
     )

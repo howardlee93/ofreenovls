@@ -1,3 +1,5 @@
 .card{
     border:solid;
+    width: fit-content;
+    padding: 2%;
 }
