@@ -8,16 +8,27 @@ const SearchResultPage = async({searchParams })=>{
 
     const result = await prisma.work.findMany({
         where:{
-            summary:{
-                contains: searchTerm
-            },
+            OR:[
+                {summary:
+                    {contains: searchTerm},
+                },
+                {title:
+                    {contains: searchTerm},
+                }
+            ]
             // tag: {
-                //name:{}
-            //     has: searchTerm,
+            //     some:{
+            //         name:{
+            //             contains: searchTerm
+            //         }
+            //     }
             // },
-            // bookmarks:{
-                //name:{}
-            //     has: searchTerm
+            // subject:{
+            //     some:{
+            //         name:{
+            //             contains: searchTerm
+            //         }
+            //     }
             // }
         },
         include:{
